@@ -1,10 +1,12 @@
 import React from "react";
 import SearchBox from "./searchBox";
+import History from "./history";
 
-const MyContent = () => {
+const MyContent = ({ data }) => {
   return (
     <main>
-      <SearchBox />
+      {/* <SearchBox data={data} /> */}
+      <History data={data} />
     </main>
   );
 };

@@ -12,11 +12,12 @@
 body {
   font-family: "Roboto", sans-serif;
   font-size: 1.3em;
+  position: fixed;
+  width: 100vw;
 }
 
-img {
-  fill: white;
-  color: white;
+button {
+  background: none;
 }
 
 .App {
@@ -86,7 +87,8 @@ main {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-main .searchBox {
+main .search-container,
+main .history-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,50 +99,179 @@ main .searchBox {
   gap: 1em;
 }
 
-main .searchBox .separator {
-  height: 1px;
-  background: azure;
+main .search-container .searchBox,
+main .history-container .searchBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1em;
 }
 
-main .searchBox input#song {
+main .search-container .searchBox .separator,
+main .history-container .searchBox .separator {
+  height: 1px;
+  background: azure;
+  width: 30%;
+  margin-top: 0.3em;
+}
+
+main .search-container .searchBox input#song,
+main .history-container .searchBox input#song {
   padding: 0.6em 1em;
   height: 4em;
   background: none;
   color: white;
   cursor: pointer;
-  border-bottom: 1px solid white;
   width: 100%;
   font-size: 0.6em;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-}
-
-main .searchBox input#song::-webkit-input-placeholder {
-  color: #cbcbcb;
-  font-size: 1.2em;
-}
-
-main .searchBox input#song:-ms-input-placeholder {
-  color: #cbcbcb;
-  font-size: 1.2em;
-}
-
-main .searchBox input#song::-ms-input-placeholder {
-  color: #cbcbcb;
-  font-size: 1.2em;
-}
-
-main .searchBox input#song::placeholder {
-  color: #cbcbcb;
-  font-size: 1.2em;
-}
-
-main .searchBox input#song:hover, main .searchBox input#song:focus {
   background: rgba(0, 0, 0, 0.2);
 }
 
-main .searchBox input#song:focus {
+main .search-container .searchBox input#song::-webkit-input-placeholder,
+main .history-container .searchBox input#song::-webkit-input-placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+main .search-container .searchBox input#song:-ms-input-placeholder,
+main .history-container .searchBox input#song:-ms-input-placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+main .search-container .searchBox input#song::-ms-input-placeholder,
+main .history-container .searchBox input#song::-ms-input-placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+main .search-container .searchBox input#song::placeholder,
+main .history-container .searchBox input#song::placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+main .search-container .searchBox input#song:hover, main .search-container .searchBox input#song:focus,
+main .history-container .searchBox input#song:hover,
+main .history-container .searchBox input#song:focus {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+main .search-container .searchBox input#song:hover::-webkit-input-placeholder, main .search-container .searchBox input#song:focus::-webkit-input-placeholder,
+main .history-container .searchBox input#song:hover::-webkit-input-placeholder,
+main .history-container .searchBox input#song:focus::-webkit-input-placeholder {
+  color: #8d8d8d;
+  font-size: 1.2em;
+}
+
+main .search-container .searchBox input#song:hover:-ms-input-placeholder, main .search-container .searchBox input#song:focus:-ms-input-placeholder,
+main .history-container .searchBox input#song:hover:-ms-input-placeholder,
+main .history-container .searchBox input#song:focus:-ms-input-placeholder {
+  color: #8d8d8d;
+  font-size: 1.2em;
+}
+
+main .search-container .searchBox input#song:hover::-ms-input-placeholder, main .search-container .searchBox input#song:focus::-ms-input-placeholder,
+main .history-container .searchBox input#song:hover::-ms-input-placeholder,
+main .history-container .searchBox input#song:focus::-ms-input-placeholder {
+  color: #8d8d8d;
+  font-size: 1.2em;
+}
+
+main .search-container .searchBox input#song:hover::placeholder, main .search-container .searchBox input#song:focus::placeholder,
+main .history-container .searchBox input#song:hover::placeholder,
+main .history-container .searchBox input#song:focus::placeholder {
+  color: #8d8d8d;
+  font-size: 1.2em;
+}
+
+main .search-container .searchBox input#song:focus,
+main .history-container .searchBox input#song:focus {
   outline: none;
   border: none;
+}
+
+main .search-container .results,
+main .history-container .results {
+  min-height: 50vh;
+  max-height: calc(160px * 4 + 30px);
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+main .search-container .results h4,
+main .history-container .results h4 {
+  font-weight: 100;
+}
+
+main .search-container .results .result,
+main .history-container .results .result {
+  min-height: 100px;
+  width: 95%;
+  padding: 0.5em 1.3em;
+  border-bottom: 1px solid #555555;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr 70px;
+      grid-template-columns: auto 1fr 70px;
+  gap: 1em;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  line-height: 2;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+
+main .search-container .results .result *,
+main .history-container .results .result * {
+  cursor: pointer;
+}
+
+main .search-container .results .result:hover,
+main .history-container .results .result:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+main .search-container .results .result > div,
+main .history-container .results .result > div {
+  width: 53%;
+}
+
+main .search-container .results .result .song-pic,
+main .history-container .results .result .song-pic {
+  width: calc(6em + 1vw);
+  overflow: hidden;
+}
+
+main .search-container .results .result .song-pic img,
+main .history-container .results .result .song-pic img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+}
+
+main .search-container .results .result img,
+main .history-container .results .result img {
+  width: 60px;
 }
 /*# sourceMappingURL=App.css.map */
