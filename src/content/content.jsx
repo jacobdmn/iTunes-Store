@@ -1,7 +1,12 @@
 import React from "react";
+import SearchBox from "./searchBox";
 
 const MyContent = () => {
-  return <section></section>;
+  return (
+    <main>
+      <SearchBox />
+    </main>
+  );
 };
 
 export default MyContent;

@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0;
+  cursor: default;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3em;
+}
+
+.App {
+  min-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  background: url("..public/imgs/bg.jpg");
+}
+
+header {
+  max-width: 250px;
+  background: #101010;
+  overflow: hidden;
+  padding: 1em;
+  color: white;
+}
+
+header img {
+  width: 80%;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+header .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1em;
+  margin: 3em 0.3em;
+}
+
+header .menu > div {
+  padding: 1em 0;
+  border-bottom: 0.01em solid currentColor;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+header .menu > div:hover {
+  background: #2e2e2ea8;
+}
+
+header .menu > div:hover a {
+  cursor: pointer;
+  margin-left: 0.4em;
+}
+
+main {
+  background: #fefefe;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/*# sourceMappingURL=App.css.map */

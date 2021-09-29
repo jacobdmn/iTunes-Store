@@ -3,13 +3,13 @@ import React from "react";
 const MyHeader = () => {
   return (
     <header>
-      <div>
+      <div className='Logo'>
         <h1>
           <img src='./imgs/logo.svg' alt='' />
         </h1>
       </div>
       <div className='menu'>
-        <div className='search-bar'>
+        <div className='search-bar active'>
           <a href=''>Search a song</a>
         </div>
         <div className='history'>

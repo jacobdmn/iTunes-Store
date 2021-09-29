@@ -6,11 +6,17 @@
           box-sizing: border-box;
   border: 0;
   cursor: default;
+  letter-spacing: 1px;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   font-size: 1.3em;
+}
+
+img {
+  fill: white;
+  color: white;
 }
 
 .App {
@@ -19,11 +25,15 @@ body {
   display: grid;
   -ms-grid-columns: auto 1fr;
       grid-template-columns: auto 1fr;
+  background: url("https://images.pexels.com/photos/5911321/pexels-photo-5911321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 header {
   max-width: 250px;
-  background: #101010;
+  background: #101010eb;
   overflow: hidden;
   padding: 1em;
   color: white;
@@ -60,12 +70,77 @@ header .menu > div {
   transition: all 0.2s ease-in;
 }
 
-header .menu > div:hover {
+header .menu > div:hover, header .menu > div.active {
   background: #2e2e2ea8;
 }
 
-header .menu > div:hover a {
+header .menu > div:hover a, header .menu > div.active a {
   cursor: pointer;
   margin-left: 0.4em;
+}
+
+main {
+  background: #fefefe;
+  color: white;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+main .searchBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1em;
+}
+
+main .searchBox .separator {
+  height: 1px;
+  background: azure;
+}
+
+main .searchBox input#song {
+  padding: 0.6em 1em;
+  height: 4em;
+  background: none;
+  color: white;
+  cursor: pointer;
+  border-bottom: 1px solid white;
+  width: 100%;
+  font-size: 0.6em;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+main .searchBox input#song::-webkit-input-placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+}
+
+main .searchBox input#song:-ms-input-placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+}
+
+main .searchBox input#song::-ms-input-placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+}
+
+main .searchBox input#song::placeholder {
+  color: #cbcbcb;
+  font-size: 1.2em;
+}
+
+main .searchBox input#song:hover, main .searchBox input#song:focus {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+main .searchBox input#song:focus {
+  outline: none;
+  border: none;
 }
 /*# sourceMappingURL=App.css.map */

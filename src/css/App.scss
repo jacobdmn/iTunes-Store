@@ -7,26 +7,30 @@
   box-sizing: border-box;
   border: 0;
   cursor: default;
+  letter-spacing: 1px;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   font-size: 1.3em;
 }
-
+img {
+  fill: white;
+  color: white;
+}
 .App {
   min-height: 100vh;
   display: grid;
   grid-template-columns: auto 1fr;
-
-  & > * {
-    // border: 1px solid #ccc;
-  }
+  background: url("https://images.pexels.com/photos/5911321/pexels-photo-5911321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
-
+$black-transparent: #101010eb;
 header {
   max-width: 250px;
-  background: #101010;
+  background: $black-transparent;
   overflow: hidden;
   padding: 1em;
   color: white;
@@ -52,12 +56,59 @@ header {
       cursor: pointer;
       transition: all 0.2s ease-in;
 
-      &:hover {
+      &:hover,
+      &.active {
         background: #2e2e2ea8;
         a {
           cursor: pointer;
           margin-left: 0.4em;
         }
+      }
+    }
+  }
+}
+
+$black-transparent-main: rgba(0, 0, 0, 0.5);
+main {
+  background: #fefefe;
+  color: white;
+  padding: 1em;
+  background-color: $black-transparent-main;
+
+  .searchBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .separator {
+      height: 1px;
+      background: azure;
+    }
+
+    input#song {
+      padding: 0.6em 1em;
+      height: 4em;
+      background: none;
+      color: white;
+      cursor: pointer;
+      border-bottom: 1px solid white;
+      width: 100%;
+      font-size: 0.6em;
+      transition: all 0.2s ease-in;
+
+      &::placeholder {
+        color: #cbcbcb;
+        font-size: 1.2em;
+      }
+
+      &:hover,
+      &:focus {
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      &:focus {
+        outline: none;
+        border: none;
       }
     }
   }
