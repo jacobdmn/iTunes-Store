@@ -8,6 +8,7 @@
   border: 0;
   cursor: default;
   letter-spacing: 1px;
+  background: none;
 }
 
 body {
@@ -16,13 +17,7 @@ body {
   position: fixed;
   width: 100vw;
 }
-img {
-  // fill: white;
-  // color: white;
-}
-button {
-  background: none;
-}
+
 .App {
   min-height: 100vh;
   display: grid;
@@ -32,6 +27,7 @@ button {
   background-size: cover;
   background-position: center;
 }
+
 $black-transparent: #101010eb;
 header {
   max-width: 250px;

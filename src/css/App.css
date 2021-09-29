@@ -7,6 +7,7 @@
   border: 0;
   cursor: default;
   letter-spacing: 1px;
+  background: none;
 }
 
 body {
@@ -14,10 +15,6 @@ body {
   font-size: 1.3em;
   position: fixed;
   width: 100vw;
-}
-
-button {
-  background: none;
 }
 
 .App {
