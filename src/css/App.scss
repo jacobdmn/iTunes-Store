@@ -17,7 +17,9 @@ body {
   position: fixed;
   width: 100vw;
 }
-
+svg {
+  margin: 0.3em;
+}
 .App {
   min-height: 100vh;
   display: grid;
@@ -172,8 +174,21 @@ main {
           }
         }
 
-        img {
+        .love svg {
           width: 60px;
+
+          path {
+            stroke: #ff7979;
+            fill: none;
+            stroke-width: 15;
+            transition: all 0.1s ease-in-out;
+
+            &:hover {
+              transform: scale(1.04);
+              transform-origin: center;
+              fill: #ff7979;
+            }
+          }
         }
       }
     }

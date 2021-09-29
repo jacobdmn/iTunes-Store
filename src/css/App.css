@@ -17,6 +17,10 @@ body {
   width: 100vw;
 }
 
+svg {
+  margin: 0.3em;
+}
+
 .App {
   min-height: 100vh;
   display: -ms-grid;
@@ -267,8 +271,26 @@ main .history-container .results .result .song-pic img {
   width: 100%;
 }
 
-main .search-container .results .result img,
-main .history-container .results .result img {
+main .search-container .results .result .love svg,
+main .history-container .results .result .love svg {
   width: 60px;
+}
+
+main .search-container .results .result .love svg path,
+main .history-container .results .result .love svg path {
+  stroke: #ff7979;
+  fill: none;
+  stroke-width: 15;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+main .search-container .results .result .love svg path:hover,
+main .history-container .results .result .love svg path:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  fill: #ff7979;
 }
 /*# sourceMappingURL=App.css.map */
