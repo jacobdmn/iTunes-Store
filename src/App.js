@@ -1,13 +1,13 @@
-import "./App.css";
-import Header from "./Header";
-import Content from "./Content";
+import "./css/App.css";
+import MyHeader from "./header/header";
+import MyContent from "./content/content";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Content />
-    </>
+    <div className='App'>
+      <MyHeader />
+      <MyContent />
+    </div>
   );
 }
 
