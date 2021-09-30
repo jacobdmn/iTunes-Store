@@ -1,7 +1,7 @@
 import React from "react";
 import Result from "./result";
 
-const History = ({ data }) => {
+const History = ({ data, favoriteList }) => {
   return (
     <div className='history-container'>
       <div className='searchBox'>
@@ -11,7 +11,7 @@ const History = ({ data }) => {
         </h2>
       </div>
       <div className='results'>
-        {data.map((song) => (
+        {favoriteList.map((song) => (
           <Result key={song.id} song={song} />
         ))}
       </div>

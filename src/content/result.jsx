@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const Result = ({ song: { title, artist, album, image } }) => {
+const Result = ({
+  song: { id, title, artist, album, image, love },
+  lovedFunc,
+  trueLove,
+}) => {
+  // useEffect(() => setTrueLove(!trueLove), [trueLove]);
   return (
     <div className='result'>
       <div className='song-pic'>
@@ -17,9 +22,9 @@ const Result = ({ song: { title, artist, album, image } }) => {
           <h4>Album: {album}</h4>
         </div>
       </div>
-      <button className='love'>
+      <button className='love' onClick={lovedFunc}>
         <svg
-          // style={{enableBackground:new 0 0 512 512;}}
+          className={trueLove ? "loved" : ""}
           version='1.1'
           viewBox='0 0 512 512'
           width='512px'

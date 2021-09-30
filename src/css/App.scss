@@ -16,9 +16,16 @@ body {
   font-size: 1.3em;
   position: fixed;
   width: 100vw;
+  color: white;
 }
 svg {
   margin: 0.3em;
+  stroke: white;
+  vertical-align: middle;
+  width: 40px;
+}
+button {
+  background: none;
 }
 .App {
   min-height: 100vh;
@@ -67,11 +74,16 @@ header {
           margin-left: 0.4em;
         }
       }
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0.1em;
+      }
     }
   }
 }
 
-$black-transparent-main: rgba(0, 0, 0, 0.5);
+$black-transparent-main: rgba(0, 0, 0, 0.75);
 main {
   background: #fefefe;
   color: white;
@@ -91,7 +103,7 @@ main {
 
       .separator {
         height: 1px;
-        background: azure;
+        background: rgb(13, 94, 94);
         width: 30%;
         margin-top: 0.3em;
       }
@@ -130,6 +142,7 @@ main {
       }
     }
     .results {
+      margin-top: 1em;
       min-height: 50vh;
       max-height: calc(160px * 4 + 30px);
       overflow-y: auto;
@@ -160,9 +173,9 @@ main {
           background-color: rgba(0, 0, 0, 0.2);
         }
 
-        & > div {
-          width: 53%;
-        }
+        // & > div {
+        //   width: 53%;
+        // }
         .song-pic {
           width: calc(6em + 1vw);
           overflow: hidden;
@@ -176,18 +189,24 @@ main {
 
         .love svg {
           width: 60px;
+          transition: all 0.1s ease-in-out;
 
           path {
             stroke: #ff7979;
             fill: none;
             stroke-width: 15;
             transition: all 0.1s ease-in-out;
-
-            &:hover {
-              transform: scale(1.04);
-              transform-origin: center;
+          }
+          &:hover,
+          &.loved {
+            transform: scale(1.1);
+            transform-origin: center;
+            path {
               fill: #ff7979;
             }
+          }
+          &.loved:hover {
+            transform: scale(0.95);
           }
         }
       }

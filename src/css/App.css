@@ -15,10 +15,18 @@ body {
   font-size: 1.3em;
   position: fixed;
   width: 100vw;
+  color: white;
 }
 
 svg {
   margin: 0.3em;
+  stroke: white;
+  vertical-align: middle;
+  width: 40px;
+}
+
+button {
+  background: none;
 }
 
 .App {
@@ -81,11 +89,21 @@ header .menu > div:hover a, header .menu > div.active a {
   margin-left: 0.4em;
 }
 
+header .menu > div a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.1em;
+}
+
 main {
   background: #fefefe;
   color: white;
   padding: 1em;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 main .search-container,
@@ -115,7 +133,7 @@ main .history-container .searchBox {
 main .search-container .searchBox .separator,
 main .history-container .searchBox .separator {
   height: 1px;
-  background: azure;
+  background: #0d5e5e;
   width: 30%;
   margin-top: 0.3em;
 }
@@ -208,6 +226,7 @@ main .history-container .searchBox input#song:focus {
 
 main .search-container .results,
 main .history-container .results {
+  margin-top: 1em;
   min-height: 50vh;
   max-height: calc(160px * 4 + 30px);
   overflow-y: auto;
@@ -251,11 +270,6 @@ main .history-container .results .result:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-main .search-container .results .result > div,
-main .history-container .results .result > div {
-  width: 53%;
-}
-
 main .search-container .results .result .song-pic,
 main .history-container .results .result .song-pic {
   width: calc(6em + 1vw);
@@ -274,6 +288,8 @@ main .history-container .results .result .song-pic img {
 main .search-container .results .result .love svg,
 main .history-container .results .result .love svg {
   width: 60px;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 main .search-container .results .result .love svg path,
@@ -285,12 +301,24 @@ main .history-container .results .result .love svg path {
   transition: all 0.1s ease-in-out;
 }
 
-main .search-container .results .result .love svg path:hover,
-main .history-container .results .result .love svg path:hover {
-  -webkit-transform: scale(1.04);
-          transform: scale(1.04);
+main .search-container .results .result .love svg:hover, main .search-container .results .result .love svg.loved,
+main .history-container .results .result .love svg:hover,
+main .history-container .results .result .love svg.loved {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   -webkit-transform-origin: center;
           transform-origin: center;
+}
+
+main .search-container .results .result .love svg:hover path, main .search-container .results .result .love svg.loved path,
+main .history-container .results .result .love svg:hover path,
+main .history-container .results .result .love svg.loved path {
   fill: #ff7979;
+}
+
+main .search-container .results .result .love svg.loved:hover,
+main .history-container .results .result .love svg.loved:hover {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
 }
 /*# sourceMappingURL=App.css.map */
