@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-
 const Result = ({
   song: { id, title, artist, album, image, love, audio },
   lovedFunc,
   playSound,
 }) => {
   return (
-    <div className='result' onClick={playSound}>
-      <div className='song-pic'>
+    <div className='result'>
+      <div className='song-pic' onClick={playSound}>
         <img src={image} alt='SONG PIC' />
       </div>
-      <div className='details'>
+      <div className='details' onClick={playSound}>
         <div className='song-title'>
           <h3>{title}</h3>
         </div>

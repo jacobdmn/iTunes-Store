@@ -12,7 +12,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 1.3em;
+  font-size: calc(clamp(1.3em, 0.5em + 1vw, 3vw));
   position: fixed;
   width: 100vw;
   color: white;
@@ -27,6 +27,19 @@ svg {
 
 button {
   background: none;
+}
+
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+textarea:autofill,
+textarea:autofill:hover,
+textarea:autofill:focus,
+select:autofill,
+select:autofill:hover,
+select:autofill:focus {
+  border: 1px solid green;
+  text-fill-color: green;
 }
 
 h5 {
@@ -47,11 +60,12 @@ h5 {
 }
 
 header {
-  max-width: 250px;
+  width: clamp(200px, 14vw, 250px);
   background: #101010eb;
   overflow: hidden;
   padding: 1em;
   color: white;
+  text-align: center;
 }
 
 header img {
@@ -73,25 +87,39 @@ header .menu {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 1em;
   margin: 3em 0.3em;
 }
 
 header .menu > div {
-  padding: 1em 0;
-  border-bottom: 0.01em solid currentColor;
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
+  width: 4em;
+  height: 4em;
+  padding: 0.7em;
+  border-radius: 50%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background: #0000009c;
 }
 
-header .menu > div:hover, header .menu > div.active {
-  background: #2e2e2ea8;
-}
-
-header .menu > div:hover a, header .menu > div.active a {
+header .menu > div * {
   cursor: pointer;
-  margin-left: 0.4em;
+}
+
+header .menu > div:hover {
+  background: #000000;
+}
+
+header .menu > div.active,
+header .menu > div.active * {
+  background: #1a1a1acc;
+  cursor: default;
 }
 
 header .menu > div a {
@@ -135,58 +163,56 @@ main .history-container .searchBox {
   gap: 1em;
 }
 
-main .search-container .searchBox .separator,
-main .history-container .searchBox .separator {
-  height: 1px;
-  background: #0d5e5e;
-  width: 30%;
-  margin-top: 0.3em;
-}
-
 main .search-container .searchBox input#song,
 main .history-container .searchBox input#song {
-  padding: 0.6em 1em;
+  padding: 4vh 1em;
   height: 4em;
   background: none;
   color: white;
   cursor: pointer;
   width: 100%;
   font-size: 0.6em;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
   background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+main .search-container .searchBox input#song:focus,
+main .history-container .searchBox input#song:focus {
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
 main .search-container .searchBox input#song::-webkit-input-placeholder,
 main .history-container .searchBox input#song::-webkit-input-placeholder {
-  color: #cbcbcb;
+  color: #fff;
   font-size: 1.2em;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 main .search-container .searchBox input#song:-ms-input-placeholder,
 main .history-container .searchBox input#song:-ms-input-placeholder {
-  color: #cbcbcb;
+  color: #fff;
   font-size: 1.2em;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 main .search-container .searchBox input#song::-ms-input-placeholder,
 main .history-container .searchBox input#song::-ms-input-placeholder {
-  color: #cbcbcb;
+  color: #fff;
   font-size: 1.2em;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 main .search-container .searchBox input#song::placeholder,
 main .history-container .searchBox input#song::placeholder {
-  color: #cbcbcb;
+  color: #fff;
   font-size: 1.2em;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 main .search-container .searchBox input#song:hover, main .search-container .searchBox input#song:focus,
@@ -231,9 +257,7 @@ main .history-container .searchBox input#song:focus {
 
 main .search-container .results,
 main .history-container .results {
-  margin-top: 1em;
-  min-height: 50vh;
-  max-height: calc(160px * 4 + 30px);
+  max-height: 80vh;
   overflow-y: auto;
   background: rgba(0, 0, 0, 0.5);
 }

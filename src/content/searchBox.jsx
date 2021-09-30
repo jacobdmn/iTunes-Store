@@ -1,8 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useContext } from "react";
 import Result from "./result";
 import { Howl, Howler } from "howler";
+import MyData from "../data";
 
-const Searchbox = ({ data, setData }) => {
+const Searchbox = () => {
+  let { data, setData } = useContext(MyData);
+
   const refContainer = useRef("null");
   const handleSearch = (e) => {
     e.preventDefault();
@@ -14,6 +17,7 @@ const Searchbox = ({ data, setData }) => {
       .then((res) => res.json())
       .then((songs) => {
         /// SONGS ARE IN results OBJECT
+        if (songs.results.length === 0) return;
         songs = songs.results;
         for (var i = 0; i <= 10; i++) {
           let {
@@ -50,8 +54,6 @@ const Searchbox = ({ data, setData }) => {
     setData(data);
   };
 
-  //// PLAY SOUND
-
   return (
     <div className='search-container'>
       <div className='searchBox'>
@@ -70,15 +72,14 @@ const Searchbox = ({ data, setData }) => {
               autoFocus={true}
             />
           </form>
-          <div className='separator'></div>
         </h2>
       </div>
       <div className='results'>
         {data.map((song) => {
-          const playSong = () => {
-            Howler.stop();
+          const playSong = (e) => {
             const sound = new Howl({ src: [song.audio], volume: 0.5 });
             sound.once("load", function () {
+              Howler.stop();
               sound.fade(0, 1, 5000);
               sound.play();
             });
@@ -88,7 +89,7 @@ const Searchbox = ({ data, setData }) => {
               key={song.id}
               song={song}
               lovedFunc={() => loved(song)}
-              playSound={() => playSong()}
+              playSound={(e) => playSong(e)}
             />
           );
         })}

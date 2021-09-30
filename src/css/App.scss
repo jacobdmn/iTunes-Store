@@ -13,7 +13,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 1.3em;
+  font-size: calc(clamp(1.3em, 0.5em + 1vw, 3vw));
   position: fixed;
   width: 100vw;
   color: white;
@@ -26,6 +26,18 @@ svg {
 }
 button {
   background: none;
+}
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+textarea:autofill,
+textarea:autofill:hover,
+textarea:autofill:focus,
+select:autofill,
+select:autofill:hover,
+select:autofill:focus {
+  border: 1px solid green;
+  text-fill-color: green;
 }
 h5 {
   font-weight: 300;
@@ -44,11 +56,12 @@ h5 {
 
 $black-transparent: #101010eb;
 header {
-  max-width: 250px;
+  width: clamp(200px, 14vw, 250px);
   background: $black-transparent;
   overflow: hidden;
   padding: 1em;
   color: white;
+  text-align: center;
 
   img {
     width: 80%;
@@ -62,23 +75,34 @@ header {
   .menu {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1em;
     margin: 3em 0.3em;
 
     & > div {
-      padding: 1em 0;
-      border-bottom: 0.01em solid currentColor;
       cursor: pointer;
       transition: all 0.2s ease-in;
+      width: 4em;
+      height: 4em;
+      padding: 0.7em;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #0000009c;
 
-      &:hover,
-      &.active {
-        background: #2e2e2ea8;
-        a {
-          cursor: pointer;
-          margin-left: 0.4em;
-        }
+      * {
+        cursor: pointer;
       }
+
+      &:hover {
+        background: #000000;
+      }
+      &.active,
+      &.active * {
+        background: #1a1a1acc;
+        cursor: default;
+      }
+
       a {
         display: flex;
         align-items: center;
@@ -106,28 +130,25 @@ main {
       flex-direction: column;
       gap: 1em;
 
-      .separator {
-        height: 1px;
-        background: rgb(13, 94, 94);
-        width: 30%;
-        margin-top: 0.3em;
-      }
-
       input#song {
-        padding: 0.6em 1em;
+        padding: 4vh 1em;
         height: 4em;
         background: none;
         color: white;
         cursor: pointer;
         width: 100%;
         font-size: 0.6em;
-        transition: all 0.2s ease-in;
+        transition: all 0.1s ease-in;
         background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
 
+        &:focus {
+          border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
         &::placeholder {
-          color: #cbcbcb;
+          color: #fff;
           font-size: 1.2em;
-          transition: all 0.2s ease-in;
+          transition: all 0.1s ease-in;
         }
 
         &:hover,
@@ -147,9 +168,7 @@ main {
       }
     }
     .results {
-      margin-top: 1em;
-      min-height: 50vh;
-      max-height: calc(160px * 4 + 30px);
+      max-height: 80vh;
       overflow-y: auto;
       background: rgba(0, 0, 0, 0.5);
 

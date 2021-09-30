@@ -1,36 +1,35 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMagnifyingGlass,
-  faCircleHeart,
-  faUserGroupCrown,
+  faUserCog,
+  faHeart,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-
 const MyHeader = () => {
   return (
     <header>
       <div className='Logo'>
         <h1>
-          <img src='./imgs/logo.svg' alt='' />
+          <img
+            src='https://cdn4.iconfinder.com/data/icons/miu-black-social-2/60/itunes-1024.png'
+            alt=''
+          />
         </h1>
       </div>
       <div className='menu'>
         <div className='search-bar active'>
           <a href=''>
-            {/* <FontAwesomeIcon icon={faMagnifyingGlass} />  */}
-            Search
+            <FontAwesomeIcon icon={faSearch} />
           </a>
         </div>
         <div className='history'>
           <a href=''>
-            {/* <FontAwesomeIcon icon={faCircleHeart} /> */}
-            Favorite
+            <FontAwesomeIcon icon={faHeart} />
           </a>
         </div>
         <div className='statistics'>
           <a href=''>
-            {/* <FontAwesomeIcon icon={faUserGroupCrown} />  */}
-            Statistics
+            <FontAwesomeIcon icon={faUserCog} />
           </a>
         </div>
       </div>
