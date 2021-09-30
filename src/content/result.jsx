@@ -5,7 +5,6 @@ const Result = ({
   lovedFunc,
   trueLove,
 }) => {
-  // useEffect(() => setTrueLove(!trueLove), [trueLove]);
   return (
     <div className='result'>
       <div className='song-pic'>
@@ -24,7 +23,7 @@ const Result = ({
       </div>
       <button className='love' onClick={lovedFunc}>
         <svg
-          className={trueLove ? "loved" : ""}
+          className={love ? "loved" : ""}
           version='1.1'
           viewBox='0 0 512 512'
           width='512px'
