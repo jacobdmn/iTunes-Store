@@ -42,7 +42,7 @@ const Searchbox = ({ data, setData }) => {
         }
         setData(data);
       })
-      .catch((err) => alert("ARE U OKEY?? NO SUCH SONG MAN !"));
+      .catch((err) => "");
   };
 
   const loved = (song) => {
@@ -59,6 +59,11 @@ const Searchbox = ({ data, setData }) => {
           <form onSubmit={handleSearch}>
             <input
               ref={refContainer}
+              onChange={(e) => {
+                e.preventDefault();
+                e.target.value = refContainer.current.value;
+                handleSearch(e);
+              }}
               type='text'
               id='song'
               placeholder='Write here your searched song..'
@@ -71,23 +76,19 @@ const Searchbox = ({ data, setData }) => {
       <div className='results'>
         {data.map((song) => {
           const playSong = () => {
+            Howler.stop();
             const sound = new Howl({ src: [song.audio], volume: 0.5 });
             sound.once("load", function () {
-              const currentSong = sound.play();
               sound.fade(0, 1, 5000);
+              sound.play();
             });
           };
-
           return (
             <Result
               key={song.id}
               song={song}
-              lovedFunc={() => {
-                loved(song);
-              }}
-              playSound={() => {
-                playSong();
-              }}
+              lovedFunc={() => loved(song)}
+              playSound={() => playSong()}
             />
           );
         })}
