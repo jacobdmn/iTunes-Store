@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 const Result = ({
   song: { id, title, artist, album, image, love },
   lovedFunc,
-  trueLove,
 }) => {
   return (
     <div className='result'>

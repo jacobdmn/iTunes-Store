@@ -3,53 +3,51 @@ import Result from "./result";
 
 const Searchbox = ({ data, setData }) => {
   const refContainer = useRef("null");
-  const [trueLove, setTrueLove] = useState(false);
   const handleSearch = (e) => {
     e.preventDefault();
     data = [];
     const url = `https://itunes.apple.com/search?term=${refContainer.current.value}&media=music`;
 
+    /// FETCHIN API DATA
     fetch(url, { METHOD: "GET" })
       .then((res) => res.json())
       .then((songs) => {
+        /// SONGS ARE IN results OBJECT
         songs = songs.results;
-        if (songs) {
-          for (var i = 0; i <= 10; i++) {
-            let {
-              trackId: id,
-              trackName: title,
-              collectionName: album,
-              artistName: artist,
-              artistId,
-              previewUrl: audio,
-              artworkUrl30: image,
-            } = songs[i];
+        for (var i = 0; i <= 10; i++) {
+          let {
+            trackId: id,
+            trackName: title,
+            collectionName: album,
+            artistName: artist,
+            artistId,
+            previewUrl: audio,
+            artworkUrl30: image,
+          } = songs[i];
 
-            data = [
-              ...data,
-              {
-                id,
-                title,
-                album,
-                artist,
-                artistId,
-                audio,
-                image,
-                loved: false,
-              },
-            ];
-          }
+          data = [
+            ...data,
+            {
+              id,
+              title,
+              album,
+              artist,
+              artistId,
+              audio,
+              image,
+              love: false,
+            },
+          ];
         }
         setData(data);
       })
       .catch((err) => alert("ARE U OKEY?? NO SUCH SONG MAN !"));
   };
 
-  const loved = (ID) => {
-    setTrueLove(data[ID - 1].love);
-    data[ID - 1].love = !data[ID - 1].love;
+  const loved = (song) => {
+    song.love = !song.love;
+    // data.find((obj) => obj.id === ID).love = true;
     setData(data);
-    // alert(data[ID].loved);
   };
   return (
     <div className='search-container'>
@@ -74,7 +72,7 @@ const Searchbox = ({ data, setData }) => {
               key={song.id}
               song={song}
               lovedFunc={() => {
-                loved(song.id);
+                loved(song);
               }}
             />
           );

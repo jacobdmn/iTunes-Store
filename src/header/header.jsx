@@ -18,7 +18,7 @@ const MyHeader = () => {
         <div className='search-bar active'>
           <a href=''>
             {/* <FontAwesomeIcon icon={faMagnifyingGlass} />  */}
-            Search a song
+            Search
           </a>
         </div>
         <div className='history'>

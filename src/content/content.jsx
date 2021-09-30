@@ -6,7 +6,7 @@ const MyContent = ({ data, setData, favoriteList }) => {
   return (
     <main>
       <SearchBox data={data} setData={setData} />
-      {/* <History data={data} favoriteList={favoriteList} /> */}
+      {/* <History favoriteList={favoriteList} /> */}
     </main>
   );
 };
