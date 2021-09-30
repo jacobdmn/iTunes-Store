@@ -6,39 +6,43 @@ const Searchbox = ({ data, setData }) => {
   const [trueLove, setTrueLove] = useState(false);
   const handleSearch = (e) => {
     e.preventDefault();
+    data = [];
     const url = `https://itunes.apple.com/search?term=${refContainer.current.value}&media=music`;
 
     fetch(url, { METHOD: "GET" })
       .then((res) => res.json())
       .then((songs) => {
         songs = songs.results;
-        data = [
-          {
-            id: 0,
-            title: "",
-            album: "",
-            artist: "",
-            artistId: "",
-            audio: "",
-            image: "",
-            love: "",
-          },
-        ];
-        for (let i = 0; i <= 30; i++) {
-          // data[i].id = songs[i].trackId;
-          data[i].title = songs[i].trackName;
-          data[i].album = songs[i].collectionName;
-          data[i].artist = songs[i].artistName;
-          data[i].artistId = songs[i].artistId;
-          data[i].audio = songs[i].previewUrl;
-          data[i].image = songs[i].artworkUrl30;
-          data[i].love = false;
+        if (songs) {
+          for (var i = 0; i <= 10; i++) {
+            let {
+              trackId: id,
+              trackName: title,
+              collectionName: album,
+              artistName: artist,
+              artistId,
+              previewUrl: audio,
+              artworkUrl30: image,
+            } = songs[i];
+
+            data = [
+              ...data,
+              {
+                id,
+                title,
+                album,
+                artist,
+                artistId,
+                audio,
+                image,
+                loved: false,
+              },
+            ];
+          }
         }
         setData(data);
-        console.log(songs);
-      });
-    console.log(refContainer);
-    // alert(url);
+      })
+      .catch((err) => alert("ARE U OKEY?? NO SUCH SONG MAN !"));
   };
 
   const loved = (ID) => {

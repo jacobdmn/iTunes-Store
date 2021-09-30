@@ -18,7 +18,7 @@ const Result = ({
           <h4>BY: {artist}</h4>
         </div>
         <div className='song-album'>
-          <h4>Album: {album}</h4>
+          <h5>Album: {album}</h5>
         </div>
       </div>
       <button className='love' onClick={lovedFunc}>
