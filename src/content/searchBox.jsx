@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Result from "./result";
+import { Howl, Howler } from "howler";
 
 const Searchbox = ({ data, setData }) => {
   const refContainer = useRef("null");
@@ -45,10 +46,12 @@ const Searchbox = ({ data, setData }) => {
   };
 
   const loved = (song) => {
-    song.love = !song.love;
-    // data.find((obj) => obj.id === ID).love = true;
+    data.find((obj) => obj.id === song.id).love = !song.love;
     setData(data);
   };
+
+  //// PLAY SOUND
+
   return (
     <div className='search-container'>
       <div className='searchBox'>
@@ -67,12 +70,23 @@ const Searchbox = ({ data, setData }) => {
       </div>
       <div className='results'>
         {data.map((song) => {
+          const playSong = () => {
+            const sound = new Howl({ src: [song.audio], volume: 0.5 });
+            sound.once("load", function () {
+              const currentSong = sound.play();
+              sound.fade(0, 1, 5000);
+            });
+          };
+
           return (
             <Result
               key={song.id}
               song={song}
               lovedFunc={() => {
                 loved(song);
+              }}
+              playSound={() => {
+                playSong();
               }}
             />
           );

@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Result = ({
-  song: { id, title, artist, album, image, love },
+  song: { id, title, artist, album, image, love, audio },
   lovedFunc,
+  playSound,
 }) => {
   return (
-    <div className='result'>
+    <div className='result' onClick={playSound}>
       <div className='song-pic'>
         <img src={image} alt='SONG PIC' />
       </div>
@@ -20,7 +21,7 @@ const Result = ({
           <h5>Album: {album}</h5>
         </div>
       </div>
-      <button className='love' onClick={lovedFunc}>
+      <button id='love' className='love' onClick={lovedFunc}>
         <svg
           className={love ? "loved" : ""}
           version='1.1'

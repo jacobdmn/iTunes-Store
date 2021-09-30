@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./css/App.css";
-import MyHeader from "./header/header";
-import MyContent from "./content/content";
+import MyHeader from "./header/";
+import MyContent from "./content/";
 
 function App() {
   const [data, setData] = useState([]);
