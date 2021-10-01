@@ -1,9 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Result from "./result";
 import { UserContext } from "../data";
 
 const History = () => {
-  const { favoriteList } = useContext(UserContext);
+  const { favoriteList, setFavoriteList } = useContext(UserContext);
+  useEffect(() => {
+    const fav = localStorage.getItem("favorite");
+    if (fav) setFavoriteList(JSON.parse(fav));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favorite", JSON.stringify(favoriteList));
+  });
   return (
     <div className='history-container'>
       <div className='searchBox'>

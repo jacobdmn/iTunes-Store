@@ -2,10 +2,26 @@ import React from "react";
 import { createContext, useState, useRef } from "react";
 export const UserContext = createContext();
 
+export const loveFunc = (
+  index,
+  song,
+  love,
+  data_GLOBAL,
+  favoriteList,
+  setFavoriteList
+) => {
+  love = !love;
+  // setData_GLOBAL(data_GLOBAL);
+  if (love && !favoriteList.includes(song))
+    setFavoriteList((prev) => [...prev, song]);
+  else {
+    setFavoriteList((prev) => prev.filter((obj) => obj.id !== song.id));
+    favoriteList.length === 0 && setFavoriteList([]);
+  }
+};
 export const UserProvider = ({ children }) => {
   const [data_GLOBAL, setData_GLOBAL] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
-  //   favoriteList.push(data_GLOBAL.filter((song) => song.love));
   const refContainer = useRef("..");
 
   const handleSearch = (e) => {

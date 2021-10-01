@@ -1,13 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Result from "./result";
 import { Howl, Howler } from "howler";
 import { UserContext } from "../data";
 
 const SearchBox = () => {
   /// CONTEXT API HOOK, DATA SHARABLE
-  const { data_GLOBAL, setData_GLOBAL, handleSearch, refContainer } =
-    useContext(UserContext);
+  const {
+    data_GLOBAL,
+    setData_GLOBAL,
+    handleSearch,
+    refContainer,
+    setFavoriteList,
+    favoriteList,
+  } = useContext(UserContext);
 
+  useEffect(() => {
+    const fav = localStorage.getItem("favorite");
+    if (fav) setFavoriteList(JSON.parse(fav));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favorite", JSON.stringify(favoriteList));
+  });
   return (
     <div className='search-container'>
       <div className='searchBox'>
@@ -41,10 +55,16 @@ const SearchBox = () => {
                   key={song.id}
                   song={song}
                   playSound={() => playSong()}
-                  loveFunc={() => {
-                    data_GLOBAL[1].love = true;
-                    alert(data_GLOBAL[1].love);
-                    setData_GLOBAL((prev) => data_GLOBAL);
+                  loveFunc={(song, favoriteList, setFavoriteList) => {
+                    song.love = !song.love;
+                    if (song.love && !favoriteList.includes(song))
+                      setFavoriteList((prev) => [...prev, song]);
+                    else {
+                      setFavoriteList((prev) =>
+                        prev.filter((obj) => obj.id !== song.id)
+                      );
+                      favoriteList.length === 0 && setFavoriteList([]);
+                    }
                   }}
                 />
               );
