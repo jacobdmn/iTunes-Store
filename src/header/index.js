@@ -5,6 +5,7 @@ import {
   faHeart,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 const MyHeader = () => {
   return (
     <header>
@@ -17,21 +18,15 @@ const MyHeader = () => {
         </h1>
       </div>
       <div className='menu'>
-        <div className='search-bar active'>
-          <a href='/'>
-            <FontAwesomeIcon icon={faSearch} />
-          </a>
-        </div>
-        <div className='history'>
-          <a href='/favorite'>
-            <FontAwesomeIcon icon={faHeart} />
-          </a>
-        </div>
-        <div className='statistics'>
-          <a href='/statistics'>
-            <FontAwesomeIcon icon={faUserCog} />
-          </a>
-        </div>
+        <NavLink exact to='/' activeClassName='active'>
+          <FontAwesomeIcon icon={faSearch} />
+        </NavLink>
+        <NavLink exact to='/favorite' activeClassName='active'>
+          <FontAwesomeIcon icon={faHeart} />
+        </NavLink>
+        <NavLink exact to='/statistics' activeClassName='active'>
+          <FontAwesomeIcon icon={faUserCog} />
+        </NavLink>
       </div>
     </header>
   );

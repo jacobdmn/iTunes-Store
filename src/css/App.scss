@@ -84,7 +84,7 @@ header {
     gap: 1em;
     margin: 3em 0.3em;
 
-    & > div {
+    & > * {
       cursor: pointer;
       transition: background 0.2s ease-in;
       width: calc(clamp(3em, 2em + 2vw, 4em));
@@ -126,7 +126,7 @@ main {
   background-color: $black-transparent-main;
 
   .search-container,
-  .history-container {
+  .favorite-container {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -240,6 +240,20 @@ main {
           }
         }
       }
+    }
+  }
+
+  .statistics {
+    height: 96vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+    #cnavas {
+      min-height: 90vh;
+      background: rgba(0, 0, 0, 0.4);
+      padding: calc(1em + 1vw);
     }
   }
 

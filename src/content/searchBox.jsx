@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Result from "./result";
 import { Howl, Howler } from "howler";
 import { UserContext } from "../data";
@@ -13,14 +13,6 @@ const SearchBox = () => {
     favoriteList,
   } = useContext(UserContext);
 
-  useEffect(() => {
-    const fav = localStorage.getItem("favorite");
-    if (fav) setFavoriteList(JSON.parse(fav));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("favorite", JSON.stringify(favoriteList));
-  });
   return (
     <div className='search-container'>
       <div className='searchBox'>
