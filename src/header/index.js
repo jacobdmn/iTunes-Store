@@ -12,23 +12,23 @@ const MyHeader = () => {
         <h1>
           <img
             src='https://cdn4.iconfinder.com/data/icons/miu-black-social-2/60/itunes-1024.png'
-            alt=''
+            alt='iTunes'
           />
         </h1>
       </div>
       <div className='menu'>
         <div className='search-bar active'>
-          <a href=''>
+          <a href='/'>
             <FontAwesomeIcon icon={faSearch} />
           </a>
         </div>
         <div className='history'>
-          <a href=''>
+          <a href='/favorite'>
             <FontAwesomeIcon icon={faHeart} />
           </a>
         </div>
         <div className='statistics'>
-          <a href=''>
+          <a href='/statistics'>
             <FontAwesomeIcon icon={faUserCog} />
           </a>
         </div>

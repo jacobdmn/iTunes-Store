@@ -42,10 +42,9 @@ const SearchBox = () => {
                   song={song}
                   playSound={() => playSong()}
                   loveFunc={() => {
-                    /// filter worked, so modify it, ur resolving a needed problem
-                    let dataTmp = data_GLOBAL;
-                    dataTmp[index].love = !dataTmp[index].love;
-                    setData_GLOBAL(dataTmp);
+                    data_GLOBAL[1].love = true;
+                    alert(data_GLOBAL[1].love);
+                    setData_GLOBAL((prev) => data_GLOBAL);
                   }}
                 />
               );
