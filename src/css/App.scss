@@ -268,4 +268,15 @@ main {
       margin: 0;
     }
   }
+
+  main {
+    .result {
+      grid-template-columns: 1fr auto;
+      position: relative;
+    }
+    .love {
+      position: absolute;
+      left: calc(4em + 1vw);
+    }
+  }
 }

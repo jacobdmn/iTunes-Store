@@ -401,5 +401,14 @@ main .history-container .results .result .love svg.loved:hover {
             flex-direction: row;
     margin: 0;
   }
+  main .result {
+    -ms-grid-columns: 1fr auto;
+        grid-template-columns: 1fr auto;
+    position: relative;
+  }
+  main .love {
+    position: absolute;
+    left: calc(4em + 1vw);
+  }
 }
 /*# sourceMappingURL=App.css.map */

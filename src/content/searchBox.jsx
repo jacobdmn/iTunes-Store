@@ -1,54 +1,11 @@
-import React, { useRef, useContext } from "react";
+import React, { useContext } from "react";
 import Result from "./result";
 import { Howl, Howler } from "howler";
 import { UserContext } from "../data";
 
 const SearchBox = () => {
   /// CONTEXT API HOOK, DATA SHARABLE
-  const { data_GLOBAL, setData_GLOBAL } = useContext(UserContext) || {};
-  const refContainer = useRef("..");
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setData_GLOBAL([]);
-    const url = `https://itunes.apple.com/search?term=${refContainer.current.value}&media=music`;
-
-    /// FETCHIN API DATA
-    fetch(url, { METHOD: "GET" })
-      .then((res) => res.json())
-      .then((songs) => {
-        /// SONGS ARE IN results OBJECT
-        if (songs.results.length === 0) setData_GLOBAL([]);
-        songs = songs.results;
-        for (var i = 0; i <= 10; i++) {
-          let {
-            trackId: id,
-            trackName: title,
-            collectionName: album,
-            artistName: artist,
-            artistId,
-            previewUrl: audio,
-            artworkUrl30: image,
-          } = songs[i];
-
-          setData_GLOBAL([
-            ...data_GLOBAL,
-            {
-              id,
-              title,
-              album,
-              artist,
-              artistId,
-              audio,
-              image,
-              love: false,
-            },
-          ]);
-        }
-      })
-      .catch((err) => "");
-  };
-
+  const { data_GLOBAL, handleSearch, refContainer } = useContext(UserContext);
   return (
     <div className='search-container'>
       <div className='searchBox'>
