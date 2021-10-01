@@ -7,7 +7,6 @@ const SearchBox = () => {
   /// CONTEXT API HOOK, DATA SHARABLE
   const {
     data_GLOBAL,
-    setData_GLOBAL,
     handleSearch,
     refContainer,
     setFavoriteList,
@@ -55,7 +54,7 @@ const SearchBox = () => {
                   key={song.id}
                   song={song}
                   playSound={() => playSong()}
-                  loveFunc={(song, favoriteList, setFavoriteList) => {
+                  loveFunc={() => {
                     song.love = !song.love;
                     if (song.love && !favoriteList.includes(song))
                       setFavoriteList((prev) => [...prev, song]);

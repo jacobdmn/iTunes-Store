@@ -60,6 +60,10 @@ export const UserProvider = ({ children }) => {
               love: false,
             },
           ]);
+          if (favoriteList.includes(data_GLOBAL[i])) {
+            data_GLOBAL[i].love = true;
+            setData_GLOBAL(data_GLOBAL[i]);
+          }
         }
       })
       .catch((err) => "");
