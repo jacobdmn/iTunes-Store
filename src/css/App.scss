@@ -17,6 +17,7 @@ body {
   position: fixed;
   width: 100vw;
   color: white;
+  position: relative;
 }
 svg {
   margin: 0.3em;
@@ -56,15 +57,19 @@ h5 {
 
 $black-transparent: #101010eb;
 header {
-  width: clamp(200px, 14vw, 250px);
+  width: clamp(100px, 14vw, 450px);
   background: $black-transparent;
   overflow: hidden;
-  padding: 1em;
+  padding: 3vw;
   color: white;
   text-align: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15vh;
   img {
-    width: 80%;
+    width: 70%;
+    min-width: 70px;
   }
   a {
     text-decoration: none;
@@ -81,26 +86,27 @@ header {
 
     & > div {
       cursor: pointer;
-      transition: all 0.2s ease-in;
-      width: 4em;
-      height: 4em;
+      transition: background 0.2s ease-in;
+      width: calc(clamp(3em, 2em + 2vw, 4em));
+      height: calc(clamp(3em, 2em + 2vw, 4em));
       padding: 0.7em;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: #0000009c;
+      background: #0000008a;
 
       * {
         cursor: pointer;
       }
 
       &:hover {
-        background: #000000;
+        background: #7f1734;
       }
       &.active,
       &.active * {
-        background: #1a1a1acc;
+        background: #7f1734;
         cursor: default;
+        border: none;
       }
 
       a {
@@ -234,6 +240,32 @@ main {
           }
         }
       }
+    }
+  }
+}
+
+@media all and (max-width: 500px) {
+  .App {
+    grid-template-columns: auto;
+  }
+  header {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: revert;
+    justify-content: center;
+    img {
+      width: 70px;
+    }
+
+    .Logo {
+      display: none;
+    }
+    .menu {
+      flex-direction: row;
+      margin: 0;
     }
   }
 }

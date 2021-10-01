@@ -16,6 +16,7 @@ body {
   position: fixed;
   width: 100vw;
   color: white;
+  position: relative;
 }
 
 svg {
@@ -60,16 +61,28 @@ h5 {
 }
 
 header {
-  width: clamp(200px, 14vw, 250px);
+  width: clamp(100px, 14vw, 450px);
   background: #101010eb;
   overflow: hidden;
-  padding: 1em;
+  padding: 3vw;
   color: white;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 15vh;
 }
 
 header img {
-  width: 80%;
+  width: 70%;
+  min-width: 70px;
 }
 
 header a {
@@ -96,16 +109,16 @@ header .menu {
 
 header .menu > div {
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  width: 4em;
-  height: 4em;
+  -webkit-transition: background 0.2s ease-in;
+  transition: background 0.2s ease-in;
+  width: calc(clamp(3em, 2em + 2vw, 4em));
+  height: calc(clamp(3em, 2em + 2vw, 4em));
   padding: 0.7em;
   border-radius: 50%;
   display: -ms-grid;
   display: grid;
   place-items: center;
-  background: #0000009c;
+  background: #0000008a;
 }
 
 header .menu > div * {
@@ -113,13 +126,14 @@ header .menu > div * {
 }
 
 header .menu > div:hover {
-  background: #000000;
+  background: #7f1734;
 }
 
 header .menu > div.active,
 header .menu > div.active * {
-  background: #1a1a1acc;
+  background: #7f1734;
   cursor: default;
+  border: none;
 }
 
 header .menu > div a {
@@ -349,5 +363,43 @@ main .search-container .results .result .love svg.loved:hover,
 main .history-container .results .result .love svg.loved:hover {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
+}
+
+@media all and (max-width: 500px) {
+  .App {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  header {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: revert;
+            flex-direction: revert;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  header img {
+    width: 70px;
+  }
+  header .Logo {
+    display: none;
+  }
+  header .menu {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 0;
+  }
 }
 /*# sourceMappingURL=App.css.map */

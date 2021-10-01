@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-const Result = ({
-  song: { id, title, artist, album, image, love, audio },
-  lovedFunc,
-  playSound,
-}) => {
+import React from "react";
+
+const Result = ({ song: { title, artist, album, image, love }, playSound }) => {
   return (
     <div className='result'>
       <div className='song-pic' onClick={playSound}>
@@ -20,7 +17,7 @@ const Result = ({
           <h5>Album: {album}</h5>
         </div>
       </div>
-      <button id='love' className='love' onClick={lovedFunc}>
+      <button id='love' className='love' onClick={() => (love = !love)}>
         <svg
           className={love ? "loved" : ""}
           version='1.1'
