@@ -153,8 +153,7 @@ main {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-main .search-container,
-main .favorite-container {
+main .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -165,8 +164,7 @@ main .favorite-container {
   gap: 1em;
 }
 
-main .search-container .searchBox,
-main .favorite-container .searchBox {
+main .container .title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,8 +175,7 @@ main .favorite-container .searchBox {
   gap: 1em;
 }
 
-main .search-container .searchBox input#song,
-main .favorite-container .searchBox input#song {
+main .container .title input#song {
   padding: 4vh 1em;
   height: 4em;
   background: none;
@@ -192,97 +189,78 @@ main .favorite-container .searchBox input#song {
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-main .search-container .searchBox input#song:focus,
-main .favorite-container .searchBox input#song:focus {
+main .container .title input#song:focus {
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-main .search-container .searchBox input#song::-webkit-input-placeholder,
-main .favorite-container .searchBox input#song::-webkit-input-placeholder {
+main .container .title input#song::-webkit-input-placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .search-container .searchBox input#song:-ms-input-placeholder,
-main .favorite-container .searchBox input#song:-ms-input-placeholder {
+main .container .title input#song:-ms-input-placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .search-container .searchBox input#song::-ms-input-placeholder,
-main .favorite-container .searchBox input#song::-ms-input-placeholder {
+main .container .title input#song::-ms-input-placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .search-container .searchBox input#song::placeholder,
-main .favorite-container .searchBox input#song::placeholder {
+main .container .title input#song::placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .search-container .searchBox input#song:hover, main .search-container .searchBox input#song:focus,
-main .favorite-container .searchBox input#song:hover,
-main .favorite-container .searchBox input#song:focus {
+main .container .title input#song:hover, main .container .title input#song:focus {
   background: rgba(0, 0, 0, 0.2);
 }
 
-main .search-container .searchBox input#song:hover::-webkit-input-placeholder, main .search-container .searchBox input#song:focus::-webkit-input-placeholder,
-main .favorite-container .searchBox input#song:hover::-webkit-input-placeholder,
-main .favorite-container .searchBox input#song:focus::-webkit-input-placeholder {
+main .container .title input#song:hover::-webkit-input-placeholder, main .container .title input#song:focus::-webkit-input-placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .search-container .searchBox input#song:hover:-ms-input-placeholder, main .search-container .searchBox input#song:focus:-ms-input-placeholder,
-main .favorite-container .searchBox input#song:hover:-ms-input-placeholder,
-main .favorite-container .searchBox input#song:focus:-ms-input-placeholder {
+main .container .title input#song:hover:-ms-input-placeholder, main .container .title input#song:focus:-ms-input-placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .search-container .searchBox input#song:hover::-ms-input-placeholder, main .search-container .searchBox input#song:focus::-ms-input-placeholder,
-main .favorite-container .searchBox input#song:hover::-ms-input-placeholder,
-main .favorite-container .searchBox input#song:focus::-ms-input-placeholder {
+main .container .title input#song:hover::-ms-input-placeholder, main .container .title input#song:focus::-ms-input-placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .search-container .searchBox input#song:hover::placeholder, main .search-container .searchBox input#song:focus::placeholder,
-main .favorite-container .searchBox input#song:hover::placeholder,
-main .favorite-container .searchBox input#song:focus::placeholder {
+main .container .title input#song:hover::placeholder, main .container .title input#song:focus::placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .search-container .searchBox input#song:focus,
-main .favorite-container .searchBox input#song:focus {
+main .container .title input#song:focus {
   outline: none;
   border: none;
 }
 
-main .search-container .results,
-main .favorite-container .results {
+main .container .results {
   max-height: 80vh;
   overflow-y: auto;
   background: rgba(0, 0, 0, 0.5);
 }
 
-main .search-container .results h4,
-main .favorite-container .results h4 {
+main .container .results h4 {
   font-weight: 100;
 }
 
-main .search-container .results .result,
-main .favorite-container .results .result {
+main .container .results .result {
   min-height: 100px;
   width: 95%;
   padding: 0.5em 1.3em;
@@ -303,24 +281,20 @@ main .favorite-container .results .result {
   cursor: pointer;
 }
 
-main .search-container .results .result *,
-main .favorite-container .results .result * {
+main .container .results .result * {
   cursor: pointer;
 }
 
-main .search-container .results .result:hover,
-main .favorite-container .results .result:hover {
+main .container .results .result:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-main .search-container .results .result .song-pic,
-main .favorite-container .results .result .song-pic {
+main .container .results .result .song-pic {
   width: calc(6em + 1vw);
   overflow: hidden;
 }
 
-main .search-container .results .result .song-pic img,
-main .favorite-container .results .result .song-pic img {
+main .container .results .result .song-pic img {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -328,15 +302,13 @@ main .favorite-container .results .result .song-pic img {
   width: 100%;
 }
 
-main .search-container .results .result .love svg,
-main .favorite-container .results .result .love svg {
+main .container .results .result .love svg {
   width: 60px;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
 
-main .search-container .results .result .love svg path,
-main .favorite-container .results .result .love svg path {
+main .container .results .result .love svg path {
   stroke: #ff7979;
   fill: none;
   stroke-width: 15;
@@ -344,23 +316,18 @@ main .favorite-container .results .result .love svg path {
   transition: all 0.1s ease-in-out;
 }
 
-main .search-container .results .result .love svg:hover, main .search-container .results .result .love svg.loved,
-main .favorite-container .results .result .love svg:hover,
-main .favorite-container .results .result .love svg.loved {
+main .container .results .result .love svg:hover, main .container .results .result .love svg.loved {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transform-origin: center;
           transform-origin: center;
 }
 
-main .search-container .results .result .love svg:hover path, main .search-container .results .result .love svg.loved path,
-main .favorite-container .results .result .love svg:hover path,
-main .favorite-container .results .result .love svg.loved path {
+main .container .results .result .love svg:hover path, main .container .results .result .love svg.loved path {
   fill: #ff7979;
 }
 
-main .search-container .results .result .love svg.loved:hover,
-main .favorite-container .results .result .love svg.loved:hover {
+main .container .results .result .love svg.loved:hover {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
@@ -395,7 +362,7 @@ main .error {
   font-size: 7vw;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 800px) {
   .App {
     -ms-grid-columns: auto !important;
         grid-template-columns: auto !important;

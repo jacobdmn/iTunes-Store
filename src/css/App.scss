@@ -125,13 +125,12 @@ main {
   padding: 1em;
   background-color: $black-transparent-main;
 
-  .search-container,
-  .favorite-container {
+  .container {
     display: flex;
     flex-direction: column;
     gap: 1em;
 
-    .searchBox {
+    .title {
       display: flex;
       flex-direction: column;
       gap: 1em;
@@ -266,7 +265,7 @@ main {
   }
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 800px) {
   .App {
     grid-template-columns: auto !important;
   }
