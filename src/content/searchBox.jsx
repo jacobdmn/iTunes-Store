@@ -5,7 +5,9 @@ import { UserContext } from "../data";
 
 const SearchBox = () => {
   /// CONTEXT API HOOK, DATA SHARABLE
-  const { data_GLOBAL, handleSearch, refContainer } = useContext(UserContext);
+  const { data_GLOBAL, setData_GLOBAL, handleSearch, refContainer } =
+    useContext(UserContext);
+
   return (
     <div className='search-container'>
       <div className='searchBox'>
@@ -24,8 +26,8 @@ const SearchBox = () => {
         </h2>
       </div>
       <div className='results'>
-        {data_GLOBAL
-          ? data_GLOBAL.map((song) => {
+        {data_GLOBAL.length !== 0
+          ? data_GLOBAL.map((song, index) => {
               const playSong = () => {
                 const sound = new Howl({ src: [song.audio], volume: 0.5 });
                 sound.once("load", function () {
@@ -39,6 +41,12 @@ const SearchBox = () => {
                   key={song.id}
                   song={song}
                   playSound={() => playSong()}
+                  loveFunc={() => {
+                    /// filter worked, so modify it, ur resolving a needed problem
+                    let dataTmp = data_GLOBAL;
+                    dataTmp[index].love = !dataTmp[index].love;
+                    setData_GLOBAL(dataTmp);
+                  }}
                 />
               );
             })

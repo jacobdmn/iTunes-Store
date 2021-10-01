@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Result from "./result";
+import { UserContext } from "../data";
 
-const History = ({ favoriteList }) => {
+const History = () => {
+  const { favoriteList } = useContext(UserContext);
   return (
     <div className='history-container'>
       <div className='searchBox'>
@@ -14,7 +16,7 @@ const History = ({ favoriteList }) => {
         {favoriteList.length > 0 ? (
           favoriteList.map((song) => <Result key={song.id} song={song} />)
         ) : (
-          <h4 style={{ padding: "1em" }}>NO SONGS LOVED YET</h4>
+          <h4 style={{ padding: "1em" }}>NO LOVED SONGS YET</h4>
         )}
       </div>
     </div>

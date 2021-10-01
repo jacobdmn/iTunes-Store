@@ -1,6 +1,10 @@
 import React from "react";
 
-const Result = ({ song: { title, artist, album, image, love }, playSound }) => {
+const Result = ({
+  song: { id, title, artist, album, image, love },
+  playSound,
+  loveFunc,
+}) => {
   return (
     <div className='result'>
       <div className='song-pic' onClick={playSound}>
@@ -17,7 +21,7 @@ const Result = ({ song: { title, artist, album, image, love }, playSound }) => {
           <h5>Album: {album}</h5>
         </div>
       </div>
-      <button id='love' className='love' onClick={() => (love = !love)}>
+      <button id='love' className='love' onClick={loveFunc}>
         <svg
           className={love ? "loved" : ""}
           version='1.1'
