@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setData_GLOBAL([]);
     const url = `https://itunes.apple.com/search?term=${refContainer.current.value}&media=music`;
 
     /// FETCHIN API DATA
@@ -30,8 +31,8 @@ export const UserProvider = ({ children }) => {
             artworkUrl30: image,
           } = songs[i];
 
-          setData_GLOBAL([
-            ...data_GLOBAL,
+          setData_GLOBAL((previous) => [
+            ...previous,
             {
               id,
               title,
