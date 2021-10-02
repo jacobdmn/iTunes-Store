@@ -151,7 +151,7 @@ const Statistics = () => {
       offset: { x: -width / 2, y: -height / 2 },
       scale: 1,
     });
-  }, []);
+  }, [favoriteList]);
 
   return (
     <div className='statistics'>
