@@ -35,10 +35,10 @@ const Statistics = () => {
             {
               id: artistId,
               label: artistName,
-              x: 200 * index,
-              y: 0,
-              fixed: true,
-              font: { size: 30 },
+              title: artistName,
+              // fixed: true,
+              font: { size: 100 },
+              // widthConstraint: 1000,
             },
           ];
           albums = [
@@ -46,11 +46,11 @@ const Statistics = () => {
             {
               id: albumId,
               label: albumName,
+              title: albumName,
               from: albumId, /// just to be more readile
               to: artistId,
-              x: 300 * index,
-              y: 100,
-              font: { size: 20 },
+              font: { size: 100 },
+              // widthConstraint: 700,
             },
           ];
           songs = [
@@ -58,12 +58,13 @@ const Statistics = () => {
             {
               id: trackId,
               label: trackName,
+              title: trackName,
               from: trackId,
               to: albumId,
               shape: "circularImage",
               image: trackImage,
-              x: 500 * index,
-              y: 300,
+              font: { size: 100 },
+              size: 200,
             },
           ];
         }
@@ -90,14 +91,25 @@ const Statistics = () => {
     let edges = edgesValueWithoutLabel;
     let options = {
       physics: {
-        stabilization: true,
+        hierarchicalRepulsion: {
+          centralGravity: 0,
+          avoidOverlap: null,
+        },
         minVelocity: 0.75,
+        solver: "hierarchicalRepulsion",
       },
       nodes: {
-        borderWidth: 0,
-        size: 50,
+        borderWidth: null,
+        borderWidthSelected: null,
+
+        widthConstraint: 800,
+        heightConstraint: 400,
+        margin: 20,
+        shape: "box",
+        // levelSeparation: 300,
         //   fixed: true,
         //   physics: false,
+
         color: {
           border: "#000000e8",
           background: "#000000e8",
@@ -105,34 +117,31 @@ const Statistics = () => {
 
         shadow: true,
         font: {
-          // size: 30,
-          // size: "20",
           color: "#fefefe",
         },
       },
 
       edges: {
         smooth: {
-          type: "diagonalCross",
-          forceDirection: false, // do not allow
-          roundness: 0.35,
+          forceDirection: "none",
         },
         color: "lightgray",
       },
       layout: {
-        randomSeed: undefined,
-        improvedLayout: true,
+        // randomSeed: undefined,
+        // improvedLayout: true,
         hierarchical: {
           enabled: true,
-          // levelSeparation: 150,
-          direction: "UD", // UD, DU, LR, RL
+          levelSeparation: 1000,
+          direction: "DU", // UD, DU, LR, RL
           sortMethod: "directed", // hubsize, directed
+          nodeSpacing: 600,
+          treeSpacing: 600,
+          // blockShifting: false,
+          // edgeMinimization: false,
+          // parentCentralization: false,
+          // shakeTowards: "leaves", // roots, leaves
         },
-      },
-      interaction: {
-        //   dragNodes: false, // do not allow dragging nodes
-        zoomView: false, // do not allow zooming
-        dragView: false, // do not allow dragging
       },
     };
     // create a network
@@ -140,17 +149,7 @@ const Statistics = () => {
       nodes: nodes,
       edges: edges,
     };
-    let network =
-      mynetwork && new Network(mynetwork.current, dataForNetwork, options);
-
-    //// Canvas position
-    let width = 600;
-    let height = 600;
-    network.moveTo({
-      position: { x: 0, y: 0 },
-      offset: { x: -width / 2, y: -height / 2 },
-      scale: 1,
-    });
+    mynetwork && new Network(mynetwork.current, dataForNetwork, options);
   }, [favoriteList]);
 
   return (

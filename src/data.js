@@ -69,6 +69,9 @@ export const UserProvider = ({ children }) => {
               previewUrl: audio,
             } = songs[i];
 
+            trackName = trackName.substring(0, 80);
+            albumName = albumName.substring(0, 80);
+            artistName = artistName.substring(0, 60);
             setData_GLOBAL((previous) => [
               ...previous,
               {
@@ -85,6 +88,7 @@ export const UserProvider = ({ children }) => {
                 love: false,
               },
             ]);
+            /// just for confirmation security
             if (data_GLOBAL.includes(data_GLOBAL[i])) data_GLOBAL.pop();
 
             if (favoriteList.includes(data_GLOBAL[i])) {
