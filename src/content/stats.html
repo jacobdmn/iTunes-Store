@@ -1,8 +1,13 @@
+<style>
+  * {
+    margin: 0;
+  }
+</style>
 <script
   type="text/javascript"
   src="../../node_modules/vis-network/dist/vis-network.min.js"
 ></script>
-<div id="mynetwork"></div>
+<div id="mynetwork" style="background-color: #000000e8"></div>
 
 <script type="text/javascript">
   // create an array with nodes
@@ -14,6 +19,8 @@
       albumName: "mix",
       artistId: 1,
       artistName: "Ava max",
+      trackImage:
+        "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/c6/9f/58/c69f58ef-d208-93cb-dc9d-e9df87a76862/source/60x60bb.jpg",
     },
     {
       trackId: 112,
@@ -22,6 +29,8 @@
       albumName: "mix2",
       artistId: 1,
       artistName: "Ava max",
+      trackImage:
+        "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/c6/9f/58/c69f58ef-d208-93cb-dc9d-e9df87a76862/source/60x60bb.jpg",
     },
     {
       trackId: 211,
@@ -30,6 +39,8 @@
       albumName: "mixJacob",
       artistId: 2,
       artistName: "jacob",
+      trackImage:
+        "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/c6/9f/58/c69f58ef-d208-93cb-dc9d-e9df87a76862/source/60x60bb.jpg",
     },
     {
       trackId: 311,
@@ -38,78 +49,169 @@
       albumName: "mix3",
       artistId: 3,
       artistName: "Justen",
+      trackImage:
+        "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/c6/9f/58/c69f58ef-d208-93cb-dc9d-e9df87a76862/source/60x60bb.jpg",
+    },
+    {
+      trackId: 411,
+      trackName: "babababa",
+      albumId: 41,
+      albumName: "mikoo11",
+      artistId: 4,
+      artistName: "4444",
+      trackImage:
+        "https://is3-ssl.mzstatic.com/image/thumb/Music115/v4/c6/9f/58/c69f58ef-d208-93cb-dc9d-e9df87a76862/source/60x60bb.jpg",
     },
   ];
 
+  /// initialize our new arrays
   let artists = [],
     albums = [],
     songs = [];
+
+  /// get needed data and set it into arrays
   data.map(
-    ({ artistId, artistName, albumId, albumName, trackId, trackName }) => {
-      artists = [...artists, { artistId, artistName }];
-      albums = [...albums, { albumId, albumName, artistId }];
-      songs = [...songs, { trackId, trackName, albumId }];
+    (
+      {
+        trackId,
+        trackName,
+        trackImage,
+        albumId,
+        albumName,
+        artistId,
+        artistName,
+      },
+      index
+    ) => {
+      artists = [
+        ...artists,
+        {
+          id: artistId,
+          label: artistName,
+          x: 200 * index,
+          y: 0,
+          fixed: true,
+          font: { size: 30 },
+        },
+      ];
+      albums = [
+        ...albums,
+        {
+          id: albumId,
+          label: albumName,
+          from: albumId, /// just to be more readile
+          to: artistId,
+          x: 300 * index,
+          y: 100,
+          font: { size: 20 },
+        },
+      ];
+      songs = [
+        ...songs,
+        {
+          id: trackId,
+          label: trackName,
+          from: trackId,
+          to: albumId,
+          shape: "circularImage",
+          image: trackImage,
+          x: 500 * index,
+          y: 300,
+        },
+      ];
     }
   );
+
+  const unique = (ARR = [], KEY) => [
+    ...new Map(ARR.map((item) => [item[KEY], item])).values(),
+  ];
+
+  //// returns unique elements in the arrays
+  artists = unique(artists, "id");
+  albums = unique(albums, "id");
+  /// console log them
+
   console.log(artists);
   console.log(albums);
   console.log(songs);
 
-  var nodes = new vis.DataSet([
-    { id: 1, label: "Artist 1", x: 100, y: 200 },
-    { id: 2, label: "Artist 2", x: 500, y: 200 },
-    { id: 11, label: "Album 1" },
-    { id: 12, label: "Album 2" },
-    { id: 111, label: "Song 1" },
-    { id: 112, label: "Song 2" },
-    { id: 113, label: "Song 3" },
-    { id: 114, label: "Song 4" },
-    { id: 115, label: "Song 5" },
-  ]);
+  /// initialize nodes and edges for network
+  var nodes = new vis.DataSet([...artists, ...albums, ...songs]);
 
-  // create an array with edges
-  var edges = new vis.DataSet([
-    { from: 111, to: 11 },
-    { from: 112, to: 11 },
-    { from: 113, to: 11 },
-    { from: 114, to: 12 },
-    { from: 115, to: 12 },
-    { from: 11, to: 1 },
-    { from: 12, to: 2 },
-  ]);
-  var width = 400;
-  var height = 400;
+  /// deleting the label value to avoid repeating
+
+  let edgesValueWithoutLabel = [];
+
+  [albums, songs].forEach((node) => {
+    node.forEach((el) => {
+      let { from, to } = el;
+      edgesValueWithoutLabel = [...edgesValueWithoutLabel, { from, to }];
+    });
+  });
+  console.log(edgesValueWithoutLabel);
+  var edges = new vis.DataSet(edgesValueWithoutLabel);
+
   var options = {
     physics: {
       stabilization: true,
     },
     nodes: {
-      borderWidth: 4,
-      size: 10,
-      fixed: true,
-      physics: false,
+      borderWidth: 0,
+      size: 50,
+      //   fixed: true,
+      //   physics: false,
       color: {
-        border: "#222222",
-        background: "#666666",
+        border: "#000000e8",
+        background: "#000000e8",
       },
+
+      shadow: true,
       font: {
-        color: "#000000",
+        // size: 30,
+        // size: "20",
+        color: "#fefefe",
       },
+    },
+
+    physics: {
+      minVelocity: 0.75,
     },
     edges: {
+      smooth: {
+        type: "diagonalCross",
+        forceDirection: false, // do not allow
+        roundness: 0.35,
+      },
       color: "lightgray",
     },
-    layout: { randomSeed: 0 },
+    layout: {
+      randomSeed: undefined,
+      improvedLayout: true,
+      hierarchical: {
+        enabled: true,
+        levelSeparation: 150,
+        direction: "UD", // UD, DU, LR, RL
+        sortMethod: "directed", // hubsize, directed
+      },
+    },
+    interaction: {
+      //   dragNodes: false, // do not allow dragging nodes
+      zoomView: false, // do not allow zooming
+      dragView: false, // do not allow dragging
+    },
   };
+
   // create a network
   var container = document.getElementById("mynetwork");
   var data = {
     nodes: nodes,
     edges: edges,
   };
-  var options = {};
   var network = new vis.Network(container, data, options);
 
+  //// Canvas position
+  var width = 600;
+  var height = 600;
   network.moveTo({
     position: { x: 0, y: 0 },
     offset: { x: -width / 2, y: -height / 2 },

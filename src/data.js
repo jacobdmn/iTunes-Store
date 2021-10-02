@@ -31,48 +31,87 @@ export const UserProvider = ({ children }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     setData_GLOBAL([]);
-    const url = `https://itunes.apple.com/search?term=${refContainer.current.value}&media=music`;
+    const searchValue = refContainer.current.value;
+    const url = `https://itunes.apple.com/search?term=${searchValue}&media=music`;
     // const cors = `https://cors-anywhere.herokuapp.com`;
+
+    /// if the user wrote, then deleted the input
+    if (!refContainer.current.value) return;
 
     /// FETCHIN API DATA
     axios
       .get(url)
       .then((songs) => {
-        songs = songs.data.results;
-        if (songs.length === 0) setData_GLOBAL([]);
-        /// SONGS ARE IN results OBJECT
+        if (songs.status === 200) {
+          /// SONGS ARE IN results OBJECT
+          songs = songs.data.results;
 
-        for (var i = 0; i <= 10; i++) {
-          let {
-            trackId,
-            trackName: title,
-            collectionName: album,
-            artistName: artist,
-            artistId,
-            previewUrl: audio,
-            artworkUrl30: image,
-          } = songs[i];
+          //// IF ANSWER IS NOTHING
+          if (songs.length === 0) setData_GLOBAL([]);
 
-          setData_GLOBAL((previous) => [
-            ...previous,
-            {
+          //// Delete Repeated songs
+          const unique = (ARR = [], KEY) => [
+            ...new Map(ARR.map((item) => [item[KEY], item])).values(),
+          ];
+          songs = unique(songs, "trackId");
+
+          for (var i = 0; i <= 10; i++) {
+            let {
               trackId,
-              title,
-              album,
-              artist,
+              trackName,
+              trackPrice,
+              trackViewUrl,
+              artworkUrl100: trackImage,
+              collectionId: albumId,
+              collectionName: albumName,
+              artistName,
               artistId,
-              audio,
-              image,
-              love: false,
-            },
-          ]);
-          if (favoriteList.includes(data_GLOBAL[i])) {
-            data_GLOBAL[i].love = true;
-            setData_GLOBAL(data_GLOBAL[i]);
+              previewUrl: audio,
+            } = songs[i];
+
+            setData_GLOBAL((previous) => [
+              ...previous,
+              {
+                trackId,
+                trackName,
+                trackPrice,
+                trackImage,
+                trackViewUrl,
+                albumId,
+                albumName,
+                artistId,
+                artistName,
+                audio,
+                love: false,
+              },
+            ]);
+            if (data_GLOBAL.includes(data_GLOBAL[i])) data_GLOBAL.pop();
+
+            if (favoriteList.includes(data_GLOBAL[i])) {
+              data_GLOBAL[i].love = true;
+              setData_GLOBAL(data_GLOBAL[i]);
+            }
           }
         }
       })
-      .catch((err) => "");
+      .catch((error) => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
   };
 
   return (

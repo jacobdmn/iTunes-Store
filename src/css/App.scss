@@ -44,6 +44,10 @@ h5 {
   font-weight: 300;
   font-size: 0.7em;
 }
+a {
+  color: white;
+  text-decoration: none;
+}
 
 .App {
   min-height: 100vh;
@@ -57,7 +61,7 @@ h5 {
 
 $black-transparent: #101010eb;
 header {
-  width: clamp(100px, 14vw, 450px);
+  width: clamp(100px, 10vw, 450px);
   background: $black-transparent;
   overflow: hidden;
   padding: 3vw;
@@ -66,10 +70,11 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   gap: 15vh;
+  font-size: 0.7em;
   img {
-    width: 70%;
-    min-width: 70px;
+    width: calc(2em + 1vw);
   }
   a {
     text-decoration: none;
@@ -180,6 +185,10 @@ main {
       h4 {
         font-weight: 100;
       }
+      h3 {
+        font-size: clamp(1em, 4vw, 1.1em);
+        line-height: 1.5em;
+      }
       .result {
         min-height: 100px;
         width: 95%;
@@ -202,11 +211,8 @@ main {
           background-color: rgba(0, 0, 0, 0.2);
         }
 
-        // & > div {
-        //   width: 53%;
-        // }
         .song-pic {
-          width: calc(6em + 1vw);
+          width: calc(3em + 6vw);
           overflow: hidden;
 
           img {
@@ -216,26 +222,40 @@ main {
           }
         }
 
-        .love svg {
-          width: 60px;
-          transition: all 0.1s ease-in-out;
-
-          path {
-            stroke: #ff7979;
-            fill: none;
-            stroke-width: 15;
+        .love-price {
+          .love svg {
+            width: calc(3em + 2vw);
             transition: all 0.1s ease-in-out;
-          }
-          &:hover,
-          &.loved {
-            transform: scale(1.1);
-            transform-origin: center;
+
             path {
-              fill: #ff7979;
+              stroke: #ff7979;
+              fill: none;
+              stroke-width: 15;
+              transition: all 0.1s ease-in-out;
+            }
+            &:hover,
+            &.loved {
+              transform: scale(1.1);
+              transform-origin: center;
+              path {
+                fill: #ff7979;
+              }
+            }
+            &.loved:hover {
+              transform: scale(0.95);
             }
           }
-          &.loved:hover {
-            transform: scale(0.95);
+          min-width: fit-content;
+          display: grid;
+          justify-content: center;
+
+          .price {
+            padding: 0.1em 0.3em;
+            background: #ff7979a3;
+            white-space: nowrap;
+            border-radius: 0.1em;
+            font-size: 1em;
+            text-align: center;
           }
         }
       }
@@ -249,7 +269,7 @@ main {
     justify-content: space-between;
     overflow: hidden;
 
-    #canvas {
+    #mynetwork {
       min-height: 90vh;
       background: rgba(0, 0, 0, 0.4);
       padding: calc(1em + 1vw);
@@ -278,6 +298,7 @@ main {
     align-items: center;
     flex-direction: revert;
     justify-content: center;
+    align-items: center;
     img {
       width: 70px;
     }
@@ -296,11 +317,10 @@ main {
       grid-template-columns: auto 1fr !important;
       position: relative;
     }
-    .love {
-      position: absolute;
-      left: calc(4em + 1vw);
-    }
 
+    .details {
+      grid-row: span 2;
+    }
     path {
       fill: #ff79797d !important;
     }

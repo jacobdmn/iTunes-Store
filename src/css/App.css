@@ -48,6 +48,11 @@ h5 {
   font-size: 0.7em;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .App {
   min-height: 100vh;
   display: -ms-grid;
@@ -61,7 +66,7 @@ h5 {
 }
 
 header {
-  width: clamp(100px, 14vw, 450px);
+  width: clamp(100px, 10vw, 450px);
   background: #101010eb;
   overflow: hidden;
   padding: 3vw;
@@ -77,12 +82,15 @@ header {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 15vh;
+  font-size: 0.7em;
 }
 
 header img {
-  width: 70%;
-  min-width: 70px;
+  width: calc(2em + 1vw);
 }
 
 header a {
@@ -260,6 +268,11 @@ main .container .results h4 {
   font-weight: 100;
 }
 
+main .container .results h3 {
+  font-size: clamp(1em, 4vw, 1.1em);
+  line-height: 1.5em;
+}
+
 main .container .results .result {
   min-height: 100px;
   width: 95%;
@@ -290,7 +303,7 @@ main .container .results .result:hover {
 }
 
 main .container .results .result .song-pic {
-  width: calc(6em + 1vw);
+  width: calc(3em + 6vw);
   overflow: hidden;
 }
 
@@ -302,13 +315,24 @@ main .container .results .result .song-pic img {
   width: 100%;
 }
 
-main .container .results .result .love svg {
-  width: 60px;
+main .container .results .result .love-price {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .container .results .result .love-price .love svg {
+  width: calc(3em + 2vw);
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
 
-main .container .results .result .love svg path {
+main .container .results .result .love-price .love svg path {
   stroke: #ff7979;
   fill: none;
   stroke-width: 15;
@@ -316,20 +340,29 @@ main .container .results .result .love svg path {
   transition: all 0.1s ease-in-out;
 }
 
-main .container .results .result .love svg:hover, main .container .results .result .love svg.loved {
+main .container .results .result .love-price .love svg:hover, main .container .results .result .love-price .love svg.loved {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transform-origin: center;
           transform-origin: center;
 }
 
-main .container .results .result .love svg:hover path, main .container .results .result .love svg.loved path {
+main .container .results .result .love-price .love svg:hover path, main .container .results .result .love-price .love svg.loved path {
   fill: #ff7979;
 }
 
-main .container .results .result .love svg.loved:hover {
+main .container .results .result .love-price .love svg.loved:hover {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
+}
+
+main .container .results .result .love-price .price {
+  padding: 0.1em 0.3em;
+  background: #ff7979a3;
+  white-space: nowrap;
+  border-radius: 0.1em;
+  font-size: 1em;
+  text-align: center;
 }
 
 main .statistics {
@@ -347,7 +380,7 @@ main .statistics {
   overflow: hidden;
 }
 
-main .statistics #canvas {
+main .statistics #mynetwork {
   min-height: 90vh;
   background: rgba(0, 0, 0, 0.4);
   padding: calc(1em + 1vw);
@@ -385,6 +418,7 @@ main .error {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    align-items: center;
   }
   header img {
     width: 70px;
@@ -404,9 +438,8 @@ main .error {
         grid-template-columns: auto 1fr !important;
     position: relative;
   }
-  main .love {
-    position: absolute;
-    left: calc(4em + 1vw);
+  main .details {
+    grid-row: span 2;
   }
   main path {
     fill: #ff79797d !important;

@@ -31,7 +31,7 @@ const SearchBox = () => {
       </div>
       <div className='results'>
         <Results
-          results={data_GLOBAL}
+          results={[...new Set(data_GLOBAL)]}
           favorite={favoriteList}
           setFavorite={setFavoriteList}
         />

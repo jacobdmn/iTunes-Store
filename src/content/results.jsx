@@ -3,6 +3,12 @@ import Result from "./result";
 import { Howl, Howler } from "howler";
 
 const Results = ({ results, favorite, setFavorite }) => {
+  //// returns unique results, so we wont have a problem with keys.. this line is really valuable
+  const unique = (ARR = [], KEY) => [
+    ...new Map(ARR.map((item) => [item[KEY], item])).values(),
+  ];
+  results = unique(results, "trackId");
+
   return (
     <>
       {results.length !== 0
