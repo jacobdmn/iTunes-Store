@@ -1,0 +1,118 @@
+<script
+  type="text/javascript"
+  src="../../node_modules/vis-network/dist/vis-network.min.js"
+></script>
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+  // create an array with nodes
+  var data = [
+    {
+      trackId: 111,
+      trackName: "so am i",
+      albumId: 11,
+      albumName: "mix",
+      artistId: 1,
+      artistName: "Ava max",
+    },
+    {
+      trackId: 112,
+      trackName: "xaxaxa",
+      albumId: 12,
+      albumName: "mix2",
+      artistId: 1,
+      artistName: "Ava max",
+    },
+    {
+      trackId: 211,
+      trackName: "who me",
+      albumId: 21,
+      albumName: "mixJacob",
+      artistId: 2,
+      artistName: "jacob",
+    },
+    {
+      trackId: 311,
+      trackName: "kings ticks",
+      albumId: 31,
+      albumName: "mix3",
+      artistId: 3,
+      artistName: "Justen",
+    },
+  ];
+
+  let artists = [],
+    albums = [],
+    songs = [];
+  data.map(
+    ({ artistId, artistName, albumId, albumName, trackId, trackName }) => {
+      artists = [...artists, { artistId, artistName }];
+      albums = [...albums, { albumId, albumName, artistId }];
+      songs = [...songs, { trackId, trackName, albumId }];
+    }
+  );
+  console.log(artists);
+  console.log(albums);
+  console.log(songs);
+
+  var nodes = new vis.DataSet([
+    { id: 1, label: "Artist 1", x: 100, y: 200 },
+    { id: 2, label: "Artist 2", x: 500, y: 200 },
+    { id: 11, label: "Album 1" },
+    { id: 12, label: "Album 2" },
+    { id: 111, label: "Song 1" },
+    { id: 112, label: "Song 2" },
+    { id: 113, label: "Song 3" },
+    { id: 114, label: "Song 4" },
+    { id: 115, label: "Song 5" },
+  ]);
+
+  // create an array with edges
+  var edges = new vis.DataSet([
+    { from: 111, to: 11 },
+    { from: 112, to: 11 },
+    { from: 113, to: 11 },
+    { from: 114, to: 12 },
+    { from: 115, to: 12 },
+    { from: 11, to: 1 },
+    { from: 12, to: 2 },
+  ]);
+  var width = 400;
+  var height = 400;
+  var options = {
+    physics: {
+      stabilization: true,
+    },
+    nodes: {
+      borderWidth: 4,
+      size: 10,
+      fixed: true,
+      physics: false,
+      color: {
+        border: "#222222",
+        background: "#666666",
+      },
+      font: {
+        color: "#000000",
+      },
+    },
+    edges: {
+      color: "lightgray",
+    },
+    layout: { randomSeed: 0 },
+  };
+  // create a network
+  var container = document.getElementById("mynetwork");
+  var data = {
+    nodes: nodes,
+    edges: edges,
+  };
+  var options = {};
+  var network = new vis.Network(container, data, options);
+
+  network.moveTo({
+    position: { x: 0, y: 0 },
+    offset: { x: -width / 2, y: -height / 2 },
+    scale: 1,
+  });
+</script>

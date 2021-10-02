@@ -347,7 +347,7 @@ main .statistics {
   overflow: hidden;
 }
 
-main .statistics #cnavas {
+main .statistics #canvas {
   min-height: 90vh;
   background: rgba(0, 0, 0, 0.4);
   padding: calc(1em + 1vw);

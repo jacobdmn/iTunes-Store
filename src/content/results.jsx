@@ -17,16 +17,18 @@ const Results = ({ results, favorite, setFavorite }) => {
             };
             return (
               <Result
-                key={song.id}
+                key={song.trackId}
                 song={song}
                 playSound={() => playSong()}
                 loveFunc={() => {
                   song.love = !song.love;
-                  if (song.love && !favorite.includes(song))
-                    setFavorite((prev) => [...prev, song]);
-                  else {
+                  if (song.love) {
+                    if (!favorite.includes(song))
+                      setFavorite((prev) => [...prev, song]);
+                    return;
+                  } else {
                     setFavorite((prev) =>
-                      prev.filter((obj) => obj.id !== song.id)
+                      prev.filter((obj) => obj.trackId !== song.trackId)
                     );
                     favorite.length === 0 && setFavorite([]);
                   }
