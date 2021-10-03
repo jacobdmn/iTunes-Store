@@ -11,7 +11,7 @@ const Favorite = () => {
         {favoriteList.length > 0 && (
           <Results
             key={new Date().getTime()}
-            results={favoriteList} /// MY RESULTS: FAVORITE ONES
+            results={{}} /// MY RESULTS: FAVORITE ONES
             favorite={favoriteList}
             setFavorite={setFavoriteList}
           />

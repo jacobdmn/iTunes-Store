@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
   const [data_GLOBAL, setData_GLOBAL] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
   const [resultsNumber, setResultsNumber] = useState(9);
-  const refContainer = useRef("..");
+  const refContainer = useRef(null);
 
   const handleSearch = (e, showMore = false) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
     axios
       .get(url)
       .then((songs) => {
-        if (songs.status === 200) {
+        if (songs.status >= 200 && songs.status < 300) {
           /// SONGS ARE IN results OBJECT
           songs = songs.data.results;
 
@@ -72,22 +72,23 @@ export const UserProvider = ({ children }) => {
             trackName = trackName.substring(0, 80);
             albumName = albumName.substring(0, 80);
             artistName = artistName.substring(0, 60);
-            setData_GLOBAL((previous) => [
-              ...previous,
-              {
-                trackId: new Date().getTime(),
-                trackName,
-                trackPrice,
-                trackImage,
-                trackViewUrl,
-                albumId,
-                albumName,
-                artistId,
-                artistName,
-                audio,
-                love: false,
-              },
-            ]);
+            data_GLOBAL.length + 1 &&
+              setData_GLOBAL((previous) => [
+                ...previous,
+                {
+                  trackId: new Date().getTime(),
+                  trackName,
+                  trackPrice,
+                  trackImage,
+                  trackViewUrl,
+                  albumId,
+                  albumName,
+                  artistId,
+                  artistName,
+                  audio,
+                  love: false,
+                },
+              ]);
             /// just for confirmation security
             if (data_GLOBAL.includes(data_GLOBAL[i])) data_GLOBAL.pop();
 

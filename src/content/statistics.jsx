@@ -15,7 +15,7 @@ const Statistics = () => {
     let edgesValueWithoutLabel = [];
 
     /// get needed data and set it into arrays
-    favoriteList
+    let data_STAT = favoriteList
       .slice(0, 6)
       .forEach(
         (
@@ -68,6 +68,19 @@ const Statistics = () => {
         }
       );
 
+    ///// GET THE 5 MOST FAVORITE ARTISTS
+    function mode(arr = [{}]) {
+      return arr
+        .sort(
+          (a, b) =>
+            arr.filter((v) => v === a).length -
+            arr.filter((v) => v === b).length
+        )
+        .pop();
+    }
+
+    data_STAT = mode(data_STAT);
+    console.log(data_STAT);
     const unique = (ARR = [], KEY) => [
       ...new Map(ARR.map((item) => [item[KEY], item])).values(),
     ];
