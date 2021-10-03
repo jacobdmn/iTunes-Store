@@ -58,7 +58,7 @@ const Statistics = () => {
             from: albumId, /// just to be more readile
             to: artists[index].id,
             font: { size: 18 },
-            widthConstraint: 150,
+            // widthConstraint: 150,
             hidden: false,
           },
         ];

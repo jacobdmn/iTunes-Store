@@ -28,6 +28,16 @@ const MyHeader = () => {
           <FontAwesomeIcon icon={faUserCog} />
         </NavLink>
       </div>
+      <div className='powered-by'>
+        <h4>
+          <a
+            href='https://www.linkedin.com/in/jacob-dmn/'
+            target='_blank'
+            rel='noreferrer'>
+            By Jacob
+          </a>
+        </h4>
+      </div>
     </header>
   );
 };

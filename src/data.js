@@ -28,7 +28,16 @@ export const UserProvider = ({ children }) => {
 
     /// FETCHIN API DATA
     axios
-      .get(url)
+      .get(url, {
+        method: "GET",
+        mode: "no-cors",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+        credentials: "same-origin",
+      })
       .then((songs) => {
         if (songs.status >= 200 && songs.status < 300) {
           songs = songs.data.results;

@@ -66,17 +66,18 @@ header {
   width: clamp(100px, 10vw, 450px);
   background: $black-transparent;
   overflow: hidden;
-  padding: 3vw;
+  padding: 1em 3vw;
   color: white;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 15vh;
   font-size: 0.7em;
   img {
     width: calc(2em + 1vw);
+    border: 1px solid white;
   }
   a {
     text-decoration: none;
@@ -120,6 +121,18 @@ header {
         display: flex;
         align-items: center;
         gap: 0.1em;
+      }
+    }
+  }
+  .powered-by {
+    * {
+      line-height: 2;
+      cursor: pointer;
+      font-weight: 100;
+      white-space: nowrap;
+
+      &:hover {
+        color: rgb(255, 185, 185);
       }
     }
   }

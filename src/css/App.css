@@ -71,7 +71,7 @@ header {
   width: clamp(100px, 10vw, 450px);
   background: rgba(0, 0, 0, 0.9);
   overflow: hidden;
-  padding: 3vw;
+  padding: 1em 3vw;
   color: white;
   text-align: center;
   display: -webkit-box;
@@ -81,9 +81,9 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -93,6 +93,7 @@ header {
 
 header img {
   width: calc(2em + 1vw);
+  border: 1px solid white;
 }
 
 header a {
@@ -154,6 +155,17 @@ header .menu > * a {
       -ms-flex-align: center;
           align-items: center;
   gap: 0.1em;
+}
+
+header .powered-by * {
+  line-height: 2;
+  cursor: pointer;
+  font-weight: 100;
+  white-space: nowrap;
+}
+
+header .powered-by *:hover {
+  color: #ffb9b9;
 }
 
 main {
