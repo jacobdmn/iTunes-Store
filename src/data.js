@@ -18,7 +18,7 @@ export const UserProvider = ({ children }) => {
 
     const searchValue = refContainer.current.value;
     const url = `https://itunes.apple.com/search?term=${searchValue}&media=music&limit=${resultsNumber}`;
-    // const cors = `https://cors-anywhere.herokuapp.com`;
+    const cors = `https://cors-anywhere.herokuapp.com/`;
 
     /// if the user reset the input
     if (!refContainer.current.value) {
@@ -27,15 +27,11 @@ export const UserProvider = ({ children }) => {
     }
 
     /// FETCHIN API DATA
-    axios(url, {
-      method: "GET",
-      mode: "no-cors",
+    axios(cors + url, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
-      withCredentials: true,
-      credentials: "same-origin",
     })
       .then((songs) => {
         if (songs.status >= 200 && songs.status < 300) {

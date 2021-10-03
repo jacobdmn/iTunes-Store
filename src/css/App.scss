@@ -40,7 +40,6 @@ select:autofill,
 select:autofill:hover,
 select:autofill:focus {
   border: 1px solid green;
-  text-fill-color: green;
 }
 h5 {
   font-weight: 300;
@@ -61,7 +60,7 @@ a {
   background-position: center;
 }
 
-$black-transparent: rgba(0, 0, 0, 0.9);
+$black-transparent: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7));
 header {
   width: clamp(100px, 10vw, 450px);
   background: $black-transparent;
@@ -310,18 +309,9 @@ main {
     }
   }
 
-  .statistics {
-    height: 96vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-
-    #mynetwork {
-      min-height: 90vh;
-      // background: rgba(0, 0, 0, 0.4);
-      padding: calc(1em + 1vw);
-    }
+  #mynetwork {
+    height: 100vh;
+    width: 100vw;
   }
 
   .error {
@@ -341,6 +331,7 @@ main {
     position: absolute;
     z-index: 2;
     width: 100vw;
+    height: 100vh;
     bottom: 0;
     display: flex;
     align-items: center;
@@ -351,7 +342,8 @@ main {
       width: 70px;
     }
 
-    .Logo {
+    .Logo,
+    .powered-by {
       display: none;
     }
     .menu {
