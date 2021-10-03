@@ -26,13 +26,14 @@ export const loveFunc = (
 export const UserProvider = ({ children }) => {
   const [data_GLOBAL, setData_GLOBAL] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [resultsNumber, setResultsNumber] = useState(9);
   const refContainer = useRef("..");
 
-  const handleSearch = (e) => {
+  const handleSearch = (e, showMore = false) => {
     e.preventDefault();
-    setData_GLOBAL([]);
+    !showMore && setData_GLOBAL([]);
     const searchValue = refContainer.current.value;
-    const url = `https://itunes.apple.com/search?term=${searchValue}&media=music&limit=15`;
+    const url = `https://itunes.apple.com/search?term=${searchValue}&media=music&limit=${resultsNumber}`;
     // const cors = `https://cors-anywhere.herokuapp.com`;
 
     /// if the user wrote, then deleted the input
@@ -126,6 +127,7 @@ export const UserProvider = ({ children }) => {
         favoriteList,
         setFavoriteList,
         refContainer,
+        setResultsNumber,
       }}>
       {children}
     </UserContext.Provider>

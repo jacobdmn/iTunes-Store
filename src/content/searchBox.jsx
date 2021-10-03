@@ -10,6 +10,7 @@ const SearchBox = () => {
     refContainer,
     favoriteList,
     setFavoriteList,
+    setResultsNumber,
   } = useContext(UserContext);
 
   return (
@@ -27,14 +28,26 @@ const SearchBox = () => {
           />
         </form>
       </h2>
-      <div className='results'>
-        <Results
-          key={new Date().getTime()}
-          results={data_GLOBAL}
-          favorite={favoriteList}
-          setFavorite={setFavoriteList}
-        />
-      </div>
+      {data_GLOBAL.length !== 0 && (
+        <div className='results'>
+          <Results
+            key={new Date().getTime()}
+            results={data_GLOBAL}
+            favorite={favoriteList}
+            setFavorite={setFavoriteList}
+            setResultsNumber={setResultsNumber}
+            handleSearch={handleSearch}
+          />
+          <div
+            className='showMore'
+            onClick={(e) => {
+              setResultsNumber((prev) => prev + 5);
+              handleSearch(e, true);
+            }}>
+            show more...
+          </div>
+        </div>
+      )}
     </div>
   );
 };

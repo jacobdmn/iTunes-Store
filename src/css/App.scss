@@ -280,6 +280,15 @@ main {
           }
         }
       }
+
+      .showMore {
+        padding: 1em;
+        cursor: pointer;
+        transition: all 0.2s ease-in;
+        &:hover {
+          color: rgb(212, 245, 255);
+        }
+      }
     }
   }
 

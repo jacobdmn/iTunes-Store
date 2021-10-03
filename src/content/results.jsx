@@ -40,15 +40,14 @@ const Results = ({ results, favorite, setFavorite }) => {
       <div className={notification ? "notif notification" : "notif"}>
         <h4>Loading...</h4>
       </div>
-      {results.length !== 0 &&
-        results.map((song) => (
-          <Result
-            key={song.trackId.toString()}
-            song={song}
-            playSound={() => playSong(song.audio)}
-            loveFunc={() => loveFunc(song, favorite, setFavorite)}
-          />
-        ))}
+      {results.map((song) => (
+        <Result
+          key={song.trackId.toString()}
+          song={song}
+          playSound={() => playSong(song.audio)}
+          loveFunc={() => loveFunc(song, favorite, setFavorite)}
+        />
+      ))}
     </>
   );
 };

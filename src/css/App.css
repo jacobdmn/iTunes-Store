@@ -398,6 +398,17 @@ main .container .results .notification {
   }
 }
 
+main .container .results .showMore {
+  padding: 1em;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+main .container .results .showMore:hover {
+  color: #d4f5ff;
+}
+
 main .statistics {
   height: 96vh;
   display: -webkit-box;
