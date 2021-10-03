@@ -55,13 +55,13 @@ a {
   min-height: 100vh;
   display: grid;
   grid-template-columns: auto 1fr;
-  background: url("https://images.pexels.com/photos/5911321/pexels-photo-5911321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background: url("./party.jpeg");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
 
-$black-transparent: #101010eb;
+$black-transparent: rgba(0, 0, 0, 0.9);
 header {
   width: clamp(100px, 10vw, 450px);
   background: $black-transparent;
@@ -147,7 +147,7 @@ main {
       font-size: 0.8em;
       transition: all 0.1s ease-in;
       background: rgba(0, 0, 0, 0.2);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-bottom: 1px solid rgba(89, 89, 89, 0.3) !important;
 
       &::placeholder {
         color: #fff;

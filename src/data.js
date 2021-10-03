@@ -60,31 +60,25 @@ export const UserProvider = ({ children }) => {
             trackName = trackName.substring(0, 80);
             albumName = albumName.substring(0, 80);
             artistName = artistName.substring(0, 60);
-            data_GLOBAL.length + 1 &&
-              setData_GLOBAL((previous) => [
-                ...previous,
-                {
-                  trackId: new Date().getTime(),
-                  trackName,
-                  trackPrice,
-                  trackImage,
-                  trackViewUrl,
-                  trackImageIcon,
-                  albumId,
-                  albumName,
-                  artistId,
-                  artistName,
-                  audio,
-                  love: false,
-                },
-              ]);
+            setData_GLOBAL((prev) => [
+              ...prev,
+              {
+                trackId: new Date().getTime(),
+                trackName,
+                trackPrice,
+                trackImage,
+                trackViewUrl,
+                trackImageIcon,
+                albumId,
+                albumName,
+                artistId,
+                artistName,
+                audio,
+                love: false,
+              },
+            ]);
             /// just for confirmation security
             if (data_GLOBAL.includes(data_GLOBAL[i])) data_GLOBAL.pop();
-
-            if (favoriteList.includes(data_GLOBAL[i])) {
-              data_GLOBAL[i].love = true;
-              setData_GLOBAL(data_GLOBAL[i]);
-            }
           }
         }
       })

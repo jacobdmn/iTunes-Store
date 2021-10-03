@@ -52,7 +52,7 @@ const Result = ({
           target='_blank'
           rel='noreferrer'
           className='price'>
-          {trackPrice} $
+          {trackPrice > 0 ? `${trackPrice} $` : "#"}
         </a>
       </div>
     </div>
