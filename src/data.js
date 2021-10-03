@@ -9,15 +9,18 @@ export const UserProvider = ({ children }) => {
   const [favoriteList, setFavoriteList] = useState([]);
   const [resultsNumber, setResultsNumber] = useState(9);
   const refContainer = useRef(null);
+  let dataCopyForCheckMore = [...data_GLOBAL]; /// [...FINAL RESULT]; IF THIS === DATA : DONT SHOW IT AGAIN => RETURN
 
   const handleSearch = (e, showMore = false) => {
     e.preventDefault();
-    !showMore && setData_GLOBAL([]);
+    !showMore && setData_GLOBAL([]); /// dont clean if the user clicked show more
+    if (showMore && data_GLOBAL === dataCopyForCheckMore) return;
+
     const searchValue = refContainer.current.value;
     const url = `https://itunes.apple.com/search?term=${searchValue}&media=music&limit=${resultsNumber}`;
     // const cors = `https://cors-anywhere.herokuapp.com`;
 
-    /// if the user wrote, then reset the input
+    /// if the user reset the input
     if (!refContainer.current.value) {
       setData_GLOBAL([]);
       return;
@@ -37,7 +40,6 @@ export const UserProvider = ({ children }) => {
           }
 
           //// Delete Repeated songs [if exist] WORKS ONLY FOR OBJECTS
-
           const unique = (ARR = [], KEY) => [
             ...new Map(ARR.map((item) => [item[KEY], item])).values(),
           ];
@@ -49,7 +51,7 @@ export const UserProvider = ({ children }) => {
               trackPrice,
               trackViewUrl,
               artworkUrl100: trackImage,
-              artworkUrl30: trackImageIcon,
+              artworkUrl60: trackImageIcon,
               collectionId: albumId,
               collectionName: albumName,
               artistName,
@@ -80,6 +82,8 @@ export const UserProvider = ({ children }) => {
             /// just for confirmation security
             if (data_GLOBAL.includes(data_GLOBAL[i])) data_GLOBAL.pop();
           }
+          setData_GLOBAL((prev) => unique(prev, "trackId"));
+          dataCopyForCheckMore = data_GLOBAL;
         }
       })
       .catch((error) => {

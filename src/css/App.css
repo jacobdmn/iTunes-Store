@@ -350,6 +350,7 @@ main .container .results .result .love-price .price {
 main .container .results .notif {
   display: none;
   opacity: 0;
+  z-index: 1000;
 }
 
 main .container .results .notification {
@@ -366,6 +367,7 @@ main .container .results .notification {
           animation: showHide 3s ease-in-out forwards;
   display: block;
   opacity: 1;
+  z-index: 1000;
 }
 
 @-webkit-keyframes showHide {
@@ -407,6 +409,10 @@ main .container .results .showMore {
 
 main .container .results .showMore:hover {
   color: #d4f5ff;
+}
+
+main .container .results .showMore:focus {
+  color: #67dcff;
 }
 
 main .statistics {

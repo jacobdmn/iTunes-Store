@@ -252,6 +252,7 @@ main {
       .notif {
         display: none;
         opacity: 0;
+        z-index: 1000;
       }
 
       .notification {
@@ -265,6 +266,7 @@ main {
         animation: showHide 3s ease-in-out forwards;
         display: block;
         opacity: 1;
+        z-index: 1000;
         @keyframes showHide {
           0% {
             display: none;
@@ -287,6 +289,9 @@ main {
         transition: all 0.2s ease-in;
         &:hover {
           color: rgb(212, 245, 255);
+        }
+        &:focus {
+          color: rgb(103, 220, 255);
         }
       }
     }
