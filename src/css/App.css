@@ -255,6 +255,21 @@ main .container input#song:focus {
   border: none;
 }
 
+main .container .cors,
+main .container .cors * {
+  color: #0077ff;
+  font-weight: 300;
+  padding: 1em;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+
+main .container .cors:hover,
+main .container .cors *:hover {
+  color: #004799;
+}
+
 main .container .results {
   overflow-y: auto;
 }
