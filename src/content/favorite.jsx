@@ -8,14 +8,13 @@ const Favorite = () => {
   return (
     <div className='container'>
       <div className='results'>
-        {favoriteList.length > 0 ? (
+        {favoriteList.length > 0 && (
           <Results
+            key={new Date().getTime()}
             results={favoriteList} /// MY RESULTS: FAVORITE ONES
             favorite={favoriteList}
             setFavorite={setFavoriteList}
           />
-        ) : (
-          <h4 style={{ padding: "2em" }}>love something then come back ;) </h4>
         )}
       </div>
     </div>

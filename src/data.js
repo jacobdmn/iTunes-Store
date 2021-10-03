@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
     e.preventDefault();
     setData_GLOBAL([]);
     const searchValue = refContainer.current.value;
-    const url = `https://itunes.apple.com/search?term=${searchValue}&media=music`;
+    const url = `https://itunes.apple.com/search?term=${searchValue}&media=music&limit=15`;
     // const cors = `https://cors-anywhere.herokuapp.com`;
 
     /// if the user wrote, then deleted the input
@@ -55,9 +55,8 @@ export const UserProvider = ({ children }) => {
           ];
           songs = unique(songs, "trackId");
 
-          for (var i = 0; i <= 10; i++) {
+          for (var i = 0; i < songs.length; i++) {
             let {
-              trackId,
               trackName,
               trackPrice,
               trackViewUrl,
@@ -75,7 +74,7 @@ export const UserProvider = ({ children }) => {
             setData_GLOBAL((previous) => [
               ...previous,
               {
-                trackId,
+                trackId: new Date().getTime(),
                 trackName,
                 trackPrice,
                 trackImage,

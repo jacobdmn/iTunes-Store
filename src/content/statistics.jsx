@@ -34,34 +34,35 @@ const Statistics = () => {
             ...artists,
             {
               id: artistId,
-              label: artistName,
-              title: artistName,
+              label: artistName.slice(0, 20),
+              title: artistName.slice(0, 20),
               fixed: true,
-              font: { size: 30 },
+              font: { size: 23 },
             },
           ];
           albums = [
             ...albums,
             {
               id: albumId,
-              label: albumName,
-              title: albumName,
+              label: albumName.slice(0, 20),
+              title: albumName.slice(0, 20),
               from: albumId, /// just to be more readile
               to: artistId,
-              font: { size: 20 },
+              font: { size: 18 },
+              widthConstraint: 150,
             },
           ];
           songs = [
             ...songs,
             {
               id: trackId,
-              label: trackName,
-              title: trackName,
+              label: trackName.slice(0, 20),
+              title: trackName.slice(0, 20),
               from: trackId,
               to: albumId,
               shape: "circularImage",
               image: trackImage,
-              font: { size: 20 },
+              font: { size: 15 },
             },
           ];
         }
@@ -98,7 +99,7 @@ const Statistics = () => {
       nodes: {
         borderWidth: 0,
         borderWidthSelected: 0,
-        margin: 20,
+        margin: 1,
         shape: "box",
         color: {
           border: "#000000e8",
@@ -120,11 +121,7 @@ const Statistics = () => {
       layout: {
         hierarchical: {
           enabled: true,
-          // direction: "UD", // UD, DU, LR, RL
-          // sortMethod: "hubsize", // hubsize, directed
-          // levelSeparation: 250,
-          // nodeSpacing: 600,
-          // treeSpacing: 600,
+          sortMethod: "directed",
         },
       },
     };

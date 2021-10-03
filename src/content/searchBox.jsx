@@ -29,7 +29,8 @@ const SearchBox = () => {
       </h2>
       <div className='results'>
         <Results
-          results={[...new Set(data_GLOBAL)]}
+          key={new Date().getTime()}
+          results={data_GLOBAL}
           favorite={favoriteList}
           setFavorite={setFavoriteList}
         />
