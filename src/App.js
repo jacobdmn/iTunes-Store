@@ -11,9 +11,8 @@ function App() {
       <UserProvider>
         <Router>
           <div className='App'>
-            {/* MY HEADER */}
             <MyHeader />
-            {/* CONTENT TO HOLD [ SEARCH BAR / HISTORY / STATS ]*/}
+            {/* CONTENT: [ SEARCH BAR / HISTORY / STATS ]*/}
             <MyContent />
           </div>
         </Router>

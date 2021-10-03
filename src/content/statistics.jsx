@@ -15,7 +15,7 @@ const Statistics = () => {
     let edgesValueWithoutLabel = [];
 
     /// get needed data and set it into arrays
-    let data_STAT = favoriteList
+    favoriteList
       .slice(0, 6)
       .forEach(
         (
@@ -68,35 +68,53 @@ const Statistics = () => {
         }
       );
 
-    ///// GET THE 5 MOST FAVORITE ARTISTS
-    function mode(arr = [{}]) {
-      return arr
-        .sort(
-          (a, b) =>
-            arr.filter((v) => v === a).length -
-            arr.filter((v) => v === b).length
-        )
-        .pop();
-    }
+    //// GET TOP 5 FAVORITE ARTISTS
+    // let mostFive = [];
+    let toArtists = [];
+    albums.forEach((album) => (toArtists = [...toArtists, album.to]));
+    toArtists = [...new Set(toArtists)];
+    alert(toArtists);
 
-    data_STAT = mode(data_STAT);
-    console.log(data_STAT);
+    /// get unique values function, WORKS ONLY FOR ARRAY OF OBJECTS
     const unique = (ARR = [], KEY) => [
       ...new Map(ARR.map((item) => [item[KEY], item])).values(),
     ];
 
-    //// returns unique elements in the arrays
+    // returns unique elements in the arrays
     artists = unique(artists, "id");
     albums = unique(albums, "id");
 
-    /// deleting the label value to avoid repeating
+    /* 
+     SONGS IN ALBUM > 1 ? 
+      SONG.TO = ALBUM.ID : 
+      SONGS.TO = ALBUM.TO
 
+*/
+    let TOs = [];
+    songs.forEach((song) => (TOs = [...TOs, song.to]));
+    TOs.forEach((to, idx) => {
+      delete TOs[idx];
+      if (!TOs.includes(to)) {
+        albums.forEach((album) => {
+          if (to === album.from) {
+            songs[idx].to = album.to;
+            delete album.to;
+            delete album.label;
+          }
+        });
+        return;
+      }
+      TOs[idx] = to;
+    });
+
+    /// wrap all edges in an array
     [albums, songs].forEach((node) => {
       node.forEach((el) => {
         let { from, to } = el;
         edgesValueWithoutLabel = [...edgesValueWithoutLabel, { from, to }];
       });
     });
+
     /// initialize nodes and edges for network
     let nodes = [...artists, ...albums, ...songs];
     let edges = edgesValueWithoutLabel;

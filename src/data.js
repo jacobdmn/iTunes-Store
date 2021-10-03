@@ -4,25 +4,6 @@ import axios from "axios";
 
 export const UserContext = createContext();
 
-export const loveFunc = (
-  index,
-  song,
-  love,
-  data_GLOBAL,
-  favoriteList,
-  setFavoriteList
-) => {
-  love = !love;
-  // setData_GLOBAL(data_GLOBAL);
-  if (love && !favoriteList.includes(song))
-    setFavoriteList((prev) => [...prev, song]);
-  else {
-    setFavoriteList((prev) =>
-      prev.filter((obj) => obj.trackId !== song.trackId)
-    );
-    favoriteList.length === 0 && setFavoriteList([]);
-  }
-};
 export const UserProvider = ({ children }) => {
   const [data_GLOBAL, setData_GLOBAL] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
@@ -36,21 +17,27 @@ export const UserProvider = ({ children }) => {
     const url = `https://itunes.apple.com/search?term=${searchValue}&media=music&limit=${resultsNumber}`;
     // const cors = `https://cors-anywhere.herokuapp.com`;
 
-    /// if the user wrote, then deleted the input
-    if (!refContainer.current.value) return;
+    /// if the user wrote, then reset the input
+    if (!refContainer.current.value) {
+      setData_GLOBAL([]);
+      return;
+    }
 
     /// FETCHIN API DATA
     axios
       .get(url)
       .then((songs) => {
         if (songs.status >= 200 && songs.status < 300) {
-          /// SONGS ARE IN results OBJECT
           songs = songs.data.results;
 
           //// IF ANSWER IS NOTHING
-          if (songs.length === 0) setData_GLOBAL([]);
+          if (songs.length === 0) {
+            setData_GLOBAL([]);
+            return;
+          }
 
-          //// Delete Repeated songs
+          //// Delete Repeated songs [if exist] WORKS ONLY FOR OBJECTS
+
           const unique = (ARR = [], KEY) => [
             ...new Map(ARR.map((item) => [item[KEY], item])).values(),
           ];
