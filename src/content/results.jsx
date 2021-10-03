@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; //, { useEffect, useState }
 import Result from "./result";
 import { Howl, Howler } from "howler";
 
@@ -9,8 +9,13 @@ const Results = ({ results, favorite, setFavorite }) => {
   ];
   results = unique(results, "trackId");
 
+  const [notification, setNotification] = useState(false);
+
   return (
     <>
+      <div className={notification ? " notif notification" : "notif"}>
+        <h4>Loading...</h4>
+      </div>
       {results.length !== 0
         ? results.map((song, index) => {
             const playSong = () => {
@@ -22,24 +27,30 @@ const Results = ({ results, favorite, setFavorite }) => {
               });
             };
             return (
-              <Result
-                key={song.trackId}
-                song={song}
-                playSound={() => playSong()}
-                loveFunc={() => {
-                  song.love = !song.love;
-                  if (song.love) {
-                    if (!favorite.includes(song))
-                      setFavorite((prev) => [...prev, song]);
-                    return;
-                  } else {
-                    setFavorite((prev) =>
-                      prev.filter((obj) => obj.trackId !== song.trackId)
-                    );
-                    favorite.length === 0 && setFavorite([]);
-                  }
-                }}
-              />
+              <>
+                <Result
+                  key={song.trackId}
+                  song={song}
+                  playSound={() => {
+                    playSong();
+                    setNotification((prev) => !prev);
+                    setTimeout(() => setNotification((prev) => !prev), 3000);
+                  }}
+                  loveFunc={() => {
+                    song.love = !song.love;
+                    if (song.love) {
+                      if (!favorite.includes(song))
+                        setFavorite((prev) => [...prev, song]);
+                      return;
+                    } else {
+                      setFavorite((prev) =>
+                        prev.filter((obj) => obj.trackId !== song.trackId)
+                      );
+                      favorite.length === 0 && setFavorite([]);
+                    }
+                  }}
+                />
+              </>
             );
           })
         : ""}

@@ -7,7 +7,7 @@
   type="text/javascript"
   src="../../node_modules/vis-network/dist/vis-network.min.js"
 ></script>
-<div id="mynetwork" style="background-color: #000000e8"></div>
+<div id="mynetwork" style="background-color: #666666e8"></div>
 
 <script type="text/javascript">
   // create an array with nodes
@@ -206,33 +206,57 @@
   console.log(edgesValueWithoutLabel);
   var edges = new vis.DataSet(edgesValueWithoutLabel);
 
-  const options = {
-    nodes: {
-      borderWidth: null,
-      borderWidthSelected: null,
-      opacity: null,
-      size: null,
-    },
-    edges: {
-      selfReferenceSize: null,
-      selfReference: {
-        angle: 0.7853981633974483,
+  let options = {
+    physics: {
+      hierarchicalRepulsion: {
+        centralGravity: 0,
+        avoidOverlap: 0,
       },
-      smooth: false,
+      minVelocity: 0.75,
+      solver: "hierarchicalRepulsion",
+    },
+    nodes: {
+      borderWidth: 0,
+      borderWidthSelected: 0,
+
+      // widthConstraint: 800,
+      // heightConstraint: 400,
+      margin: 20,
+      shape: "box",
+      // levelSeparation: 300,
+      //   fixed: true,
+      //   physics: false,
+
+      color: {
+        border: "#000000e8",
+        background: "#000000e8",
+      },
+
+      shadow: true,
+      font: {
+        color: "#fefefe",
+      },
+    },
+
+    edges: {
+      smooth: {
+        forceDirection: "none",
+      },
+      color: "lightgray",
     },
     layout: {
       hierarchical: {
         enabled: true,
-        sortMethod: "directed", // hubsize, directed
+        // levelSeparation: 1000,
+        // direction: "DU", // UD, DU, LR, RL
+        // sortMethod: "directed", // hubsize, directed
+        // nodeSpacing: 600,
+        // treeSpacing: 600,
+        // blockShifting: false,
+        // edgeMinimization: false,
+        // parentCentralization: false,
+        // shakeTowards: "leaves", // roots, leaves
       },
-    },
-    physics: {
-      hierarchicalRepulsion: {
-        centralGravity: 0,
-        avoidOverlap: null,
-      },
-      minVelocity: 0.75,
-      solver: "hierarchicalRepulsion",
     },
   };
 

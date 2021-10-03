@@ -13,6 +13,7 @@ const Result = ({
   },
   playSound,
   loveFunc,
+  onClick,
 }) => {
   return (
     <div className='result'>

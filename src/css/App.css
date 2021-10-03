@@ -14,9 +14,11 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: calc(clamp(1.3em, 0.5em + 1vw, 3vw));
   position: fixed;
-  width: 100vw;
   color: white;
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 svg {
@@ -157,111 +159,92 @@ header .menu > * a {
 main {
   background: #fefefe;
   color: white;
-  padding: 1em;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 main .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 1em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: auto 1fr;
+      grid-template-rows: auto 1fr;
+  height: 100vh;
 }
 
-main .container .title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 1em;
-}
-
-main .container .title input#song {
+main .container input#song {
   padding: 4vh 1em;
   height: 4em;
   background: none;
   color: white;
   cursor: pointer;
   width: 100%;
-  font-size: 0.6em;
+  font-size: 0.8em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
   background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-main .container .title input#song:focus {
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-}
-
-main .container .title input#song::-webkit-input-placeholder {
+main .container input#song::-webkit-input-placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .container .title input#song:-ms-input-placeholder {
+main .container input#song:-ms-input-placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .container .title input#song::-ms-input-placeholder {
+main .container input#song::-ms-input-placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .container .title input#song::placeholder {
+main .container input#song::placeholder {
   color: #fff;
   font-size: 1.2em;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
 }
 
-main .container .title input#song:hover, main .container .title input#song:focus {
+main .container input#song:hover, main .container input#song:focus {
   background: rgba(0, 0, 0, 0.2);
 }
 
-main .container .title input#song:hover::-webkit-input-placeholder, main .container .title input#song:focus::-webkit-input-placeholder {
+main .container input#song:hover::-webkit-input-placeholder, main .container input#song:focus::-webkit-input-placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .container .title input#song:hover:-ms-input-placeholder, main .container .title input#song:focus:-ms-input-placeholder {
+main .container input#song:hover:-ms-input-placeholder, main .container input#song:focus:-ms-input-placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .container .title input#song:hover::-ms-input-placeholder, main .container .title input#song:focus::-ms-input-placeholder {
+main .container input#song:hover::-ms-input-placeholder, main .container input#song:focus::-ms-input-placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .container .title input#song:hover::placeholder, main .container .title input#song:focus::placeholder {
+main .container input#song:hover::placeholder, main .container input#song:focus::placeholder {
   color: #8d8d8d;
   font-size: 1.2em;
 }
 
-main .container .title input#song:focus {
+main .container input#song:focus {
   outline: none;
   border: none;
 }
 
 main .container .results {
-  max-height: 80vh;
   overflow-y: auto;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 main .container .results h4 {
@@ -275,7 +258,6 @@ main .container .results h3 {
 
 main .container .results .result {
   min-height: 100px;
-  width: 95%;
   padding: 0.5em 1.3em;
   border-bottom: 1px solid #555555;
   display: -ms-grid;
@@ -365,6 +347,57 @@ main .container .results .result .love-price .price {
   text-align: center;
 }
 
+main .container .results .notif {
+  display: none;
+  opacity: 0;
+}
+
+main .container .results .notification {
+  position: fixed;
+  padding: 1em;
+  background: black;
+  left: 50%;
+  top: 20%;
+  -webkit-box-shadow: 0 0.1em 2em -0.1em red;
+          box-shadow: 0 0.1em 2em -0.1em red;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: showHide 3s ease-in-out forwards;
+          animation: showHide 3s ease-in-out forwards;
+  display: block;
+  opacity: 1;
+}
+
+@-webkit-keyframes showHide {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  20% {
+    display: block;
+    opacity: 1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+
+@keyframes showHide {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  20% {
+    display: block;
+    opacity: 1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+
 main .statistics {
   height: 96vh;
   display: -webkit-box;
@@ -382,7 +415,6 @@ main .statistics {
 
 main .statistics #mynetwork {
   min-height: 90vh;
-  background: rgba(0, 0, 0, 0.4);
   padding: calc(1em + 1vw);
 }
 

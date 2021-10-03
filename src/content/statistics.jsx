@@ -36,9 +36,8 @@ const Statistics = () => {
               id: artistId,
               label: artistName,
               title: artistName,
-              // fixed: true,
-              font: { size: 100 },
-              // widthConstraint: 1000,
+              fixed: true,
+              font: { size: 30 },
             },
           ];
           albums = [
@@ -49,8 +48,7 @@ const Statistics = () => {
               title: albumName,
               from: albumId, /// just to be more readile
               to: artistId,
-              font: { size: 100 },
-              // widthConstraint: 700,
+              font: { size: 20 },
             },
           ];
           songs = [
@@ -63,8 +61,7 @@ const Statistics = () => {
               to: albumId,
               shape: "circularImage",
               image: trackImage,
-              font: { size: 100 },
-              size: 200,
+              font: { size: 20 },
             },
           ];
         }
@@ -93,23 +90,16 @@ const Statistics = () => {
       physics: {
         hierarchicalRepulsion: {
           centralGravity: 0,
-          avoidOverlap: null,
+          avoidOverlap: 0,
         },
         minVelocity: 0.75,
         solver: "hierarchicalRepulsion",
       },
       nodes: {
-        borderWidth: null,
-        borderWidthSelected: null,
-
-        widthConstraint: 800,
-        heightConstraint: 400,
+        borderWidth: 0,
+        borderWidthSelected: 0,
         margin: 20,
         shape: "box",
-        // levelSeparation: 300,
-        //   fixed: true,
-        //   physics: false,
-
         color: {
           border: "#000000e8",
           background: "#000000e8",
@@ -128,19 +118,13 @@ const Statistics = () => {
         color: "lightgray",
       },
       layout: {
-        // randomSeed: undefined,
-        // improvedLayout: true,
         hierarchical: {
           enabled: true,
-          levelSeparation: 1000,
-          direction: "DU", // UD, DU, LR, RL
-          sortMethod: "directed", // hubsize, directed
-          nodeSpacing: 600,
-          treeSpacing: 600,
-          // blockShifting: false,
-          // edgeMinimization: false,
-          // parentCentralization: false,
-          // shakeTowards: "leaves", // roots, leaves
+          // direction: "UD", // UD, DU, LR, RL
+          // sortMethod: "hubsize", // hubsize, directed
+          // levelSeparation: 250,
+          // nodeSpacing: 600,
+          // treeSpacing: 600,
         },
       },
     };
@@ -152,12 +136,7 @@ const Statistics = () => {
     mynetwork && new Network(mynetwork.current, dataForNetwork, options);
   }, [favoriteList]);
 
-  return (
-    <div className='statistics'>
-      <h2>Stats</h2>
-      <div id='mynetwork' ref={mynetwork}></div>
-    </div>
-  );
+  return <div id='mynetwork' ref={mynetwork}></div>;
 };
 
 export default Statistics;

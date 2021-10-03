@@ -15,9 +15,11 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: calc(clamp(1.3em, 0.5em + 1vw, 3vw));
   position: fixed;
-  width: 100vw;
   color: white;
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 svg {
   margin: 0.3em;
@@ -123,65 +125,53 @@ header {
   }
 }
 
-$black-transparent-main: rgba(0, 0, 0, 0.75);
+$black-transparent-main: rgba(0, 0, 0, 0.8);
 main {
   background: #fefefe;
   color: white;
-  padding: 1em;
+  // padding: 1em;
   background-color: $black-transparent-main;
 
   .container {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    input#song {
+      padding: 4vh 1em;
+      height: 4em;
+      background: none;
+      color: white;
+      cursor: pointer;
+      width: 100%;
+      font-size: 0.8em;
+      transition: all 0.1s ease-in;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
 
-    .title {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-
-      input#song {
-        padding: 4vh 1em;
-        height: 4em;
-        background: none;
-        color: white;
-        cursor: pointer;
-        width: 100%;
-        font-size: 0.6em;
+      &::placeholder {
+        color: #fff;
+        font-size: 1.2em;
         transition: all 0.1s ease-in;
+      }
+
+      &:hover,
+      &:focus {
         background: rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
 
-        &:focus {
-          border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        }
         &::placeholder {
-          color: #fff;
+          color: #8d8d8d;
           font-size: 1.2em;
-          transition: all 0.1s ease-in;
         }
+      }
 
-        &:hover,
-        &:focus {
-          background: rgba(0, 0, 0, 0.2);
-
-          &::placeholder {
-            color: #8d8d8d;
-            font-size: 1.2em;
-          }
-        }
-
-        &:focus {
-          outline: none;
-          border: none;
-        }
+      &:focus {
+        outline: none;
+        border: none;
       }
     }
     .results {
-      max-height: 80vh;
       overflow-y: auto;
-      background: rgba(0, 0, 0, 0.5);
-
       h4 {
         font-weight: 100;
       }
@@ -191,7 +181,6 @@ main {
       }
       .result {
         min-height: 100px;
-        width: 95%;
         padding: 0.5em 1.3em;
         border-bottom: 1px solid rgb(85, 85, 85);
         display: grid;
@@ -259,6 +248,38 @@ main {
           }
         }
       }
+
+      .notif {
+        display: none;
+        opacity: 0;
+      }
+
+      .notification {
+        position: fixed;
+        padding: 1em;
+        background: black;
+        left: 50%;
+        top: 20%;
+        box-shadow: 0 0.1em 2em -0.1em red;
+        transform: translateX(-50%);
+        animation: showHide 3s ease-in-out forwards;
+        display: block;
+        opacity: 1;
+        @keyframes showHide {
+          0% {
+            display: none;
+            opacity: 0;
+          }
+          20% {
+            display: block;
+            opacity: 1;
+          }
+          100% {
+            display: none;
+            opacity: 0;
+          }
+        }
+      }
     }
   }
 
@@ -271,7 +292,7 @@ main {
 
     #mynetwork {
       min-height: 90vh;
-      background: rgba(0, 0, 0, 0.4);
+      // background: rgba(0, 0, 0, 0.4);
       padding: calc(1em + 1vw);
     }
   }
