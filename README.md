@@ -43,8 +43,9 @@
 ##  - `REACT`
 
 -----
-Honestly, Initially The website was just a simple assignment from Schwarzthal in an interview, but I started liking it more, I'm looking to uodate it, and use:
+# Honestly, Initially The website was just a simple assignment from Schwarzthal in an interview, but I started liking it more, I'm looking to uodate it, and use:
 ## - `API` from multipe websites
+## - `Redux` to be well organized
 ## - `Firebase` to make a database for users
 ## - `TypeScript` to make the code a lot more professional
 ## - `Affiliate links` from API companies so I can make a profit
