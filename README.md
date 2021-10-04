@@ -41,4 +41,12 @@
 ##  - `SASS`
 ##  - `JAVASCRIPT`
 ##  - `REACT`
-# PS: in the beginning you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS'
+
+-----
+Honestly, Initially The website was just a simple assignment from Schwarzthal in an interview, but I started liking it more, I'm looking to uodate it, and use:
+## - `API` from multipe websites
+## - `Firebase` to make a database for users
+## - `TypeScript` to make the code a lot more professional
+## - `Affiliate links` from API companies so I can make a profit
+...
+# PS: in the beginning, probably you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS', [just a quick solution for cors block]
