@@ -34,3 +34,5 @@
 - vis-network was used to show statistics
 - there is no local storage on refresh
 - CROS link is provided to be able to receive API data
+
+## PS: in the beginning you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS'
