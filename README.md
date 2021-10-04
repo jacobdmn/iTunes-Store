@@ -36,6 +36,9 @@
 - CROS link is provided to be able to receive API data
 
 ## Tech Stack:
-  - HTML5/CSS3/SASS
-  - JAVASCRIPT/REACT
-## PS: in the beginning you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS'
+##  - `HTML5`
+##  - `CSS3`
+##  - `SASS`
+##  - `JAVASCRIPT`
+##  - `REACT`
+# PS: in the beginning you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS'
