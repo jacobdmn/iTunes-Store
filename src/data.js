@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
   const [data_GLOBAL, setData_GLOBAL] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
   const [resultsNumber, setResultsNumber] = useState(9);
+  const [corsClass, setCorsClass] = useState(false);
   const refContainer = useRef(null);
   let dataCopyForCheckMore = [...data_GLOBAL]; /// [...FINAL RESULT]; IF THIS === DATA : DONT SHOW IT AGAIN => RETURN
 
@@ -120,6 +121,8 @@ export const UserProvider = ({ children }) => {
         setFavoriteList,
         refContainer,
         setResultsNumber,
+        corsClass,
+        setCorsClass,
       }}>
       {children}
     </UserContext.Provider>

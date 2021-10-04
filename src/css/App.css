@@ -255,19 +255,24 @@ main .container input#song:focus {
   border: none;
 }
 
-main .container .cors,
-main .container .cors * {
+main .container #cors {
   color: #0077ff;
   font-weight: 300;
-  padding: 1em;
+  margin: 1em;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   cursor: pointer;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-main .container .cors:hover,
-main .container .cors *:hover {
+main .container #cors:hover {
   color: #004799;
+}
+
+main .container #cors.hide {
+  display: none;
 }
 
 main .container .results {

@@ -11,6 +11,8 @@ const SearchBox = () => {
     favoriteList,
     setFavoriteList,
     setResultsNumber,
+    corsClass,
+    setCorsClass,
   } = useContext(UserContext);
 
   return (
@@ -27,14 +29,16 @@ const SearchBox = () => {
             onChange={(e) => handleSearch(e)}
           />
         </form>
-        <h6 className='cors' onClick={(e) => e.target.closest("h6").remove()}>
-          <a
-            href='https://cors-anywhere.herokuapp.com/corsdemo'
-            target='_blank'
-            rel='noreferrer'>
+
+        <a
+          href='https://cors-anywhere.herokuapp.com/corsdemo'
+          target='_blank'
+          rel='noreferrer'
+          onClick={() => setCorsClass(true)}>
+          <h6 id='cors' className={corsClass ? `hide` : ""}>
             CLICK HERE TO ALLOW RESULTS
-          </a>
-        </h6>
+          </h6>
+        </a>
       </h2>
       {data_GLOBAL.length !== 0 && (
         <div className='results'>

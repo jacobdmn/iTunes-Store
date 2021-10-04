@@ -182,18 +182,19 @@ main {
         border: none;
       }
     }
-    .cors {
-      &,
-      * {
-        color: #0077ff;
-        font-weight: 300;
-        padding: 1em;
-        transition: all 0.2s ease-in;
-        cursor: pointer;
+    #cors {
+      color: #0077ff;
+      font-weight: 300;
+      margin: 1em;
+      transition: all 0.2s ease-in;
+      cursor: pointer;
+      width: fit-content;
 
-        &:hover {
-          color: #004799;
-        }
+      &:hover {
+        color: #004799;
+      }
+      &.hide {
+        display: none;
       }
     }
     .results {
