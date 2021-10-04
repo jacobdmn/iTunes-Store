@@ -43,11 +43,11 @@
 ##  - `REACT`
 
 -----
-# Honestly, Initially The website was just a simple assignment from Schwarzthal in an interview, but I started liking it more, I'm looking to uodate it, and use:
-## - `API` from multipe websites
-## - `Redux` to be well organized
-## - `Firebase` to make a database for users
-## - `TypeScript` to make the code a lot more professional
-## - `Affiliate links` from API companies so I can make a profit
+# WILL BE INTEGRATED SOON:
+## + `API` FROM SHOPIFY, YOUTUBE MUSIC
+## + `Redux`
+## + `Firebase` FOR USERS LOGIN
+## + `TypeScript`
+## + `Affiliate links` FROM APIs
 ...
 # PS: in the beginning, probably you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS', [just a quick solution for cors block]
