@@ -2,7 +2,7 @@
 
 ## a simple store that fetchs data from iTunes API, and show statistics about most favorite songs, albums, and artists
 
-# (#LIVE_LINK)[https://itunes-store.netlify.app/]
+# [=> LIVE_LINK <=](https://itunes-store.netlify.app/)
 
 ## 2 Sections:
 
@@ -34,3 +34,20 @@
 - vis-network was used to show statistics
 - there is no local storage on refresh
 - CROS link is provided to be able to receive API data
+
+## Tech Stack:
+##  - `HTML5`
+##  - `CSS3`
+##  - `SASS`
+##  - `JAVASCRIPT`
+##  - `REACT`
+
+-----
+# WILL BE INTEGRATED SOON:
+## + `API` FROM SHOPIFY, YOUTUBE MUSIC
+## + `Redux`
+## + `Firebase` FOR USERS LOGIN
+## + `TypeScript`
+## + `Affiliate links` FROM APIs
+...
+# PS: in the beginning, probably you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS', [just a quick solution for cors block]
