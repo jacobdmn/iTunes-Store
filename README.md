@@ -49,3 +49,7 @@
 ## + `Affiliate links` FROM APIs
 ...
 # PS: in the beginning, probably you need to allow the browser to receive data from API, just by clicking 'CLICK HERE TO ALLOW RESULTS', [just a quick solution for cors block]
+
+<img src="https://github.com/jacobdmn/iTunes-Store/blob/main/Screenshot%202021-10-24%20at%209.26.31%20PM.png" />
+
+<img src="https://github.com/jacobdmn/iTunes-Store/blob/main/Screenshot%202021-10-24%20at%209.26.52%20PM.png" />
