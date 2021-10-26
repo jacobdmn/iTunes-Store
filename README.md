@@ -38,7 +38,7 @@
 ## Tech Stack:
 ##  - `HTML5`
 ##  - `CSS3`: `SASS`
-##  - `JAVASCRIPT`: `REACT`
+##  - `JAVASCRIPT`: `REACT`, `VIS Network`
 
 -----
 # WILL BE INTEGRATED SOON:
