@@ -2,6 +2,7 @@
 
 ## a simple store that fetchs data from iTunes API, and show statistics about most favorite songs, albums, and artists
 
+## before you check the website, make sure to activate CORS [read to the end]
 # [=> LIVE_LINK <=](https://itunes-store.netlify.app/)
 
 ## 2 Sections:
